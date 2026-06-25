@@ -1,0 +1,9 @@
+{
+  "model_name": "transformer_user5",
+  "saved_at_utc": "20260624T130622Z",
+  "uid": "7dbc72a4",
+  "best_val_acc": 0.9876611325675879,
+  "normalization": "palm_ref",
+  "notebook": "prototype",
+  "source": "prototype_w_left_model_palm_ref.ipynb"
+}
