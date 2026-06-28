@@ -54,16 +54,16 @@ DEV_VAL_SEED = SEED + 202
 BATCH_SIZE = 4
 MODEL_NAME = "lstm_fullseq"
 NORMALIZATION_NAME = "palm_ref"
-EPOCHS = 100
+EPOCHS = 50
 LEARNING_RATE = 3e-4
 
 # ──────────────────────────────────────────────────────────────────────
 # LSTM architecture
 # ──────────────────────────────────────────────────────────────────────
 FEAT_DIM = 128
-HIDDEN_SIZE = 128
+HIDDEN_SIZE = 256
 NUM_LSTM_LAYERS = 2
-DROPOUT = 0.4
+DROPOUT = 0.2
 
 # ──────────────────────────────────────────────────────────────────────
 # Streaming / online decoder

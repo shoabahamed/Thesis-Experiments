@@ -1,0 +1,1952 @@
+[ignoring loop detection]
+==================================================
+COMMENT: running with focal loss
+==================================================
+RUN START TIME (UTC): 20260627T161954Z
+Log filepath        : trained_models\logs\run_single_user3_20260627T161954Z.log
+==================================================
+COMMAND LINE ARGUMENTS:
+  --louo      : False
+  --test_mode : False
+  --test_user : user3
+  --epochs    : 50
+  --lr        : 0.0003
+  --save_dir  : trained_models
+  --comment   : running with focal loss
+  --focal_loss: True
+  --focal_gamma: 2.0
+==================================================
+CENTRAL HYPERPARAMETERS:
+  Device            : cuda
+  Dataset root      : C:\Shoab\Thesis\Experiments\dataset
+  Seed              : 42
+  Dev-Val Ratio     : 0.12
+  Batch size        : 4
+  Test mode         : False
+  Model name        : lstm_fullseq
+  Normalization     : palm_ref
+  Learning rate     : 0.0003
+  Epochs            : 50
+  Feature dim       : 128
+  Hidden size       : 256
+  Num layers        : 2
+  Dropout           : 0.2
+  Decoder bag size  : 5
+  Decoder threshold : 0.35
+  Loss function     : FocalLoss (gamma=2.0)
+==================================================
+
+Using device: cuda
+Dataset root: C:\Shoab\Thesis\Experiments\dataset
+Matched recordings per user:
+  user1: 76 recordings
+  user2: 73 recordings
+  user3: 55 recordings
+  user5: 72 recordings
+
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+
+Total raw segments (sign + background): 2293
+Available users: ['user1', 'user2', 'user3', 'user5']
+
+======================================================================
+FOLD: test_user=user3, dev_users=['user1', 'user2', 'user5']
+======================================================================
+
+============================================================
+SPLIT: test_user=user3, dev_users=['user1', 'user2', 'user5']
+============================================================
+Dev removed by filter   : {'missing_data': 1, 'low_confidence': 1, 'too_short': 4}
+Test removed by filter  : {'too_short': 1}
+Train segments (filtered): 1558
+Val segments (filtered)  : 272
+Test segments (filtered) : 457
+Label mapping (string -> ID):
+  np.str_('AUGUST') -> 0
+  np.str_('BIG') -> 1
+  np.str_('BIRD') -> 2
+  np.str_('BOAT') -> 3
+  np.str_('COME') -> 4
+  np.str_('DRIVER') -> 5
+  np.str_('FARMING') -> 6
+  np.str_('FEBRUARY') -> 7
+  np.str_('GO') -> 8
+  np.str_('GREETINGS') -> 9
+  np.str_('OUR') -> 10
+  np.str_('READ') -> 11
+  np.str_('SMALL') -> 12
+  np.str_('TIGER') -> 13
+  np.str_('TRAIN') -> 14
+  np.str_('UGLY') -> 15
+  np.str_('VAN') -> 16
+  np.str_('WHAT') -> 17
+  np.str_('WHICH') -> 18
+  np.str_('WRITE') -> 19
+  np.str_('background') -> 20
+
+Total classes: 21
+Background class ID: 20
+WER catalog sizes -> train: 188, val: 33, test: 55
+Train batches: 47 | Val batches: 9 | Test batches: 14
+Loss function: FocalLoss (gamma=2.0, weighted)
+Model: lstm_fullseq | Trainable params: 991,509
+[lstm_fullseq] using normalization: palm_ref
+Stabilization: grad_clip=True (norm=1.0), scheduler=True, early_stopping_patience=15
+Model selection criterion: validation macro-F1
+  -> [lstm_fullseq] new best in memory (val_f1=0.6056, val_acc=0.7501)
+lstm_fullseq | Epoch 01 | Loss: 0.7412 | Train Acc: 0.3730 | Train F1: 0.3028 | Val Acc: 0.7501 | Val F1: 0.6056
+  -> [lstm_fullseq] new best in memory (val_f1=0.6505, val_acc=0.7702)
+lstm_fullseq | Epoch 02 | Loss: 0.3462 | Train Acc: 0.6835 | Train F1: 0.5642 | Val Acc: 0.7702 | Val F1: 0.6505
+  -> [lstm_fullseq] new best in memory (val_f1=0.6593, val_acc=0.7387)
+lstm_fullseq | Epoch 03 | Loss: 0.2353 | Train Acc: 0.6811 | Train F1: 0.6111 | Val Acc: 0.7387 | Val F1: 0.6593
+  -> [lstm_fullseq] new best in memory (val_f1=0.7268, val_acc=0.7850)
+lstm_fullseq | Epoch 04 | Loss: 0.1801 | Train Acc: 0.7221 | Train F1: 0.6593 | Val Acc: 0.7850 | Val F1: 0.7268
+  -> [lstm_fullseq] new best in memory (val_f1=0.7443, val_acc=0.7933)
+lstm_fullseq | Epoch 05 | Loss: 0.1470 | Train Acc: 0.7266 | Train F1: 0.6825 | Val Acc: 0.7933 | Val F1: 0.7443
+  -> [lstm_fullseq] new best in memory (val_f1=0.7534, val_acc=0.7948)
+lstm_fullseq | Epoch 06 | Loss: 0.1238 | Train Acc: 0.7542 | Train F1: 0.7059 | Val Acc: 0.7948 | Val F1: 0.7534
+lstm_fullseq | Epoch 07 | Loss: 0.1121 | Train Acc: 0.7634 | Train F1: 0.7173 | Val Acc: 0.7822 | Val F1: 0.7392
+lstm_fullseq | Epoch 08 | Loss: 0.0999 | Train Acc: 0.7591 | Train F1: 0.7179 | Val Acc: 0.7957 | Val F1: 0.7519
+  -> [lstm_fullseq] new best in memory (val_f1=0.7869, val_acc=0.8384)
+lstm_fullseq | Epoch 09 | Loss: 0.0942 | Train Acc: 0.7752 | Train F1: 0.7353 | Val Acc: 0.8384 | Val F1: 0.7869
+lstm_fullseq | Epoch 10 | Loss: 0.0930 | Train Acc: 0.7834 | Train F1: 0.7338 | Val Acc: 0.8127 | Val F1: 0.7662
+lstm_fullseq | Epoch 11 | Loss: 0.0770 | Train Acc: 0.7983 | Train F1: 0.7528 | Val Acc: 0.8097 | Val F1: 0.7654
+  -> [lstm_fullseq] new best in memory (val_f1=0.7899, val_acc=0.8404)
+lstm_fullseq | Epoch 12 | Loss: 0.0682 | Train Acc: 0.8082 | Train F1: 0.7623 | Val Acc: 0.8404 | Val F1: 0.7899
+  -> [lstm_fullseq] new best in memory (val_f1=0.8139, val_acc=0.8620)
+lstm_fullseq | Epoch 13 | Loss: 0.0648 | Train Acc: 0.8014 | Train F1: 0.7611 | Val Acc: 0.8620 | Val F1: 0.8139
+lstm_fullseq | Epoch 14 | Loss: 0.0554 | Train Acc: 0.8146 | Train F1: 0.7762 | Val Acc: 0.8400 | Val F1: 0.7826
+lstm_fullseq | Epoch 15 | Loss: 0.0566 | Train Acc: 0.8195 | Train F1: 0.7780 | Val Acc: 0.8468 | Val F1: 0.8061
+lstm_fullseq | Epoch 16 | Loss: 0.0480 | Train Acc: 0.8327 | Train F1: 0.7917 | Val Acc: 0.8088 | Val F1: 0.7857
+lstm_fullseq | Epoch 17 | Loss: 0.0508 | Train Acc: 0.8257 | Train F1: 0.7865 | Val Acc: 0.8182 | Val F1: 0.7901
+lstm_fullseq | Epoch 18 | Loss: 0.0440 | Train Acc: 0.8437 | Train F1: 0.8015 | Val Acc: 0.8268 | Val F1: 0.7942
+lstm_fullseq | Epoch 19 | Loss: 0.0412 | Train Acc: 0.8418 | Train F1: 0.8030 | Val Acc: 0.8231 | Val F1: 0.7653
+lstm_fullseq | Epoch 20 | Loss: 0.0345 | Train Acc: 0.8550 | Train F1: 0.8173 | Val Acc: 0.8203 | Val F1: 0.7849
+  -> [lstm_fullseq] new best in memory (val_f1=0.8304, val_acc=0.8687)
+lstm_fullseq | Epoch 21 | Loss: 0.0285 | Train Acc: 0.8588 | Train F1: 0.8256 | Val Acc: 0.8687 | Val F1: 0.8304
+lstm_fullseq | Epoch 22 | Loss: 0.0263 | Train Acc: 0.8726 | Train F1: 0.8392 | Val Acc: 0.8575 | Val F1: 0.8166
+  -> [lstm_fullseq] new best in memory (val_f1=0.8463, val_acc=0.8866)
+lstm_fullseq | Epoch 23 | Loss: 0.0267 | Train Acc: 0.8637 | Train F1: 0.8303 | Val Acc: 0.8866 | Val F1: 0.8463
+lstm_fullseq | Epoch 24 | Loss: 0.0245 | Train Acc: 0.8698 | Train F1: 0.8379 | Val Acc: 0.8705 | Val F1: 0.8299
+lstm_fullseq | Epoch 25 | Loss: 0.0231 | Train Acc: 0.8711 | Train F1: 0.8393 | Val Acc: 0.8789 | Val F1: 0.8421
+lstm_fullseq | Epoch 26 | Loss: 0.0220 | Train Acc: 0.8753 | Train F1: 0.8449 | Val Acc: 0.8488 | Val F1: 0.8087
+lstm_fullseq | Epoch 27 | Loss: 0.0217 | Train Acc: 0.8756 | Train F1: 0.8438 | Val Acc: 0.8662 | Val F1: 0.8259
+lstm_fullseq | Epoch 28 | Loss: 0.0200 | Train Acc: 0.8787 | Train F1: 0.8485 | Val Acc: 0.8518 | Val F1: 0.8113
+lstm_fullseq | Epoch 29 | Loss: 0.0197 | Train Acc: 0.8776 | Train F1: 0.8479 | Val Acc: 0.8528 | Val F1: 0.8123
+lstm_fullseq | Epoch 30 | Loss: 0.0168 | Train Acc: 0.8895 | Train F1: 0.8609 | Val Acc: 0.8628 | Val F1: 0.8263
+lstm_fullseq | Epoch 31 | Loss: 0.0156 | Train Acc: 0.8861 | Train F1: 0.8590 | Val Acc: 0.8684 | Val F1: 0.8333
+lstm_fullseq | Epoch 32 | Loss: 0.0148 | Train Acc: 0.8873 | Train F1: 0.8595 | Val Acc: 0.8708 | Val F1: 0.8327
+lstm_fullseq | Epoch 33 | Loss: 0.0143 | Train Acc: 0.8942 | Train F1: 0.8669 | Val Acc: 0.8606 | Val F1: 0.8229
+lstm_fullseq | Epoch 34 | Loss: 0.0135 | Train Acc: 0.8908 | Train F1: 0.8642 | Val Acc: 0.8611 | Val F1: 0.8281
+lstm_fullseq | Epoch 35 | Loss: 0.0137 | Train Acc: 0.8951 | Train F1: 0.8687 | Val Acc: 0.8536 | Val F1: 0.8223
+lstm_fullseq | Epoch 36 | Loss: 0.0126 | Train Acc: 0.8964 | Train F1: 0.8711 | Val Acc: 0.8796 | Val F1: 0.8437
+lstm_fullseq | Epoch 37 | Loss: 0.0121 | Train Acc: 0.8971 | Train F1: 0.8719 | Val Acc: 0.8761 | Val F1: 0.8363
+lstm_fullseq | Epoch 38 | Loss: 0.0117 | Train Acc: 0.8987 | Train F1: 0.8734 | Val Acc: 0.8759 | Val F1: 0.8371
+Early stopping triggered after 38 epochs (no improvement for 15 epochs).
+
+lstm_fullseq per-epoch summary:
+           model normalization  epoch  train_loss  train_batch_acc  train_f1   val_acc    val_f1
+28  lstm_fullseq      palm_ref     29    0.019658         0.877644  0.847906  0.852833  0.812311
+29  lstm_fullseq      palm_ref     30    0.016837         0.889462  0.860866  0.862833  0.826303
+30  lstm_fullseq      palm_ref     31    0.015573         0.886081  0.859041  0.868375  0.833270
+31  lstm_fullseq      palm_ref     32    0.014834         0.887274  0.859525  0.870750  0.832684
+32  lstm_fullseq      palm_ref     33    0.014289         0.894190  0.866940  0.860583  0.822932
+33  lstm_fullseq      palm_ref     34    0.013480         0.890816  0.864235  0.861125  0.828073
+34  lstm_fullseq      palm_ref     35    0.013664         0.895104  0.868677  0.853625  0.822348
+35  lstm_fullseq      palm_ref     36    0.012627         0.896378  0.871068  0.879625  0.843714
+36  lstm_fullseq      palm_ref     37    0.012114         0.897073  0.871899  0.876125  0.836271
+37  lstm_fullseq      palm_ref     38    0.011715         0.898661  0.873439  0.875875  0.837111
+[lstm_fullseq] best model restored from memory.
+
+========== TRAIN FRAME-LEVEL REPORT ==========
+Accuracy: 0.8942
+              precision    recall  f1-score   support
+
+      AUGUST       0.90      0.98      0.94      3391
+         BIG       0.70      0.99      0.82      2383
+        BIRD       0.74      0.98      0.84      2642
+        BOAT       0.74      0.99      0.85      2190
+        COME       0.78      0.95      0.85      2437
+      DRIVER       0.89      0.99      0.94      3988
+     FARMING       0.84      0.98      0.91      3018
+    FEBRUARY       0.82      0.98      0.89      3330
+          GO       0.76      0.99      0.86      1880
+   GREETINGS       0.89      0.98      0.93      2934
+         OUR       0.67      0.95      0.79      2002
+        READ       0.86      0.97      0.91      3734
+       SMALL       0.77      0.97      0.86      2740
+       TIGER       0.59      1.00      0.74      2118
+       TRAIN       0.82      0.99      0.89      2699
+        UGLY       0.71      0.94      0.81      2243
+         VAN       0.75      1.00      0.86      2274
+        WHAT       0.60      0.99      0.74       935
+       WHICH       0.83      0.99      0.90      2892
+       WRITE       0.89      0.99      0.93      2585
+  background       0.99      0.84      0.91     84235
+
+    accuracy                           0.89    136650
+   macro avg       0.79      0.97      0.87    136650
+weighted avg       0.92      0.89      0.90    136650
+
+
+========== VAL FRAME-LEVEL REPORT ==========
+Accuracy: 0.8866
+              precision    recall  f1-score   support
+
+      AUGUST       0.90      0.97      0.93       709
+         BIG       0.67      0.96      0.79       385
+        BIRD       0.71      0.93      0.80       559
+        BOAT       0.69      0.96      0.80       379
+        COME       0.79      0.95      0.86       403
+      DRIVER       0.91      0.95      0.93       724
+     FARMING       0.81      0.83      0.82       451
+    FEBRUARY       0.82      0.98      0.89       665
+          GO       0.76      0.98      0.86       324
+   GREETINGS       0.92      0.97      0.94       511
+         OUR       0.75      0.96      0.84       342
+        READ       0.89      0.97      0.93       678
+       SMALL       0.82      0.95      0.88       477
+       TIGER       0.54      0.98      0.69       345
+       TRAIN       0.80      0.94      0.87       496
+        UGLY       0.70      0.81      0.75       431
+         VAN       0.62      0.99      0.76       311
+        WHAT       0.59      0.95      0.73       198
+       WHICH       0.74      0.97      0.84       485
+       WRITE       0.89      0.99      0.94       508
+  background       0.99      0.85      0.91     14619
+
+    accuracy                           0.89     24000
+   macro avg       0.78      0.94      0.85     24000
+weighted avg       0.91      0.89      0.89     24000
+
+
+========== TEST FRAME-LEVEL REPORT ==========
+Accuracy: 0.7308
+              precision    recall  f1-score   support
+
+      AUGUST       0.89      0.82      0.85      1135
+         BIG       0.66      0.91      0.76       719
+        BIRD       0.73      0.62      0.67       845
+        BOAT       0.61      0.76      0.68       780
+        COME       0.77      0.70      0.73       621
+      DRIVER       0.73      0.97      0.83      1295
+     FARMING       0.77      0.73      0.75       982
+    FEBRUARY       0.24      0.97      0.39      1036
+          GO       0.48      0.88      0.62       381
+   GREETINGS       0.79      0.81      0.80       916
+         OUR       0.60      0.29      0.39       513
+        READ       0.72      0.85      0.78      1046
+       SMALL       0.86      0.73      0.79       894
+       TIGER       0.64      0.86      0.73       622
+       TRAIN       0.68      0.96      0.80       678
+        UGLY       0.38      0.06      0.10       741
+         VAN       0.21      0.85      0.34       819
+        WHAT       0.60      0.44      0.51       361
+       WHICH       0.66      0.96      0.78       784
+       WRITE       0.79      0.83      0.81      1088
+  background       0.94      0.70      0.81     24994
+
+    accuracy                           0.73     41250
+   macro avg       0.66      0.75      0.66     41250
+weighted avg       0.83      0.73      0.75     41250
+
+
+========== FRAME ACCURACY SUMMARY ==========
+split  frame_accuracy
+Train        0.894197
+  Val        0.886583
+ Test        0.730812
+
+========== TEST (USER3) WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : lstm_online
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 55
+Mean WER:   0.3864
+Median WER: 0.3333
+Std WER:    0.3239
+
+Showing 5 example sequence(s):
+  [1] user3 | P3_S10_R1
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(48, 123, np.str_('SMALL')), (268, 379, np.str_('FEBRUARY')), (485, 581, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 37, 'end_frame': 114}, {'label': 'FEBRUARY', 'start_frame': 264, 'end_frame': 360}, {'label': 'BOAT', 'start_frame': 479, 'end_frame': 558}]
+  [2] user3 | P3_S10_R2
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 4
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'WHICH', 'BOAT']
+    WER          : 0.3333
+    Emit regions : [(44, 133, np.str_('SMALL')), (221, 342, np.str_('FEBRUARY')), (430, 460, np.str_('WHICH')), (463, 567, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 35, 'end_frame': 118}, {'label': 'FEBRUARY', 'start_frame': 219, 'end_frame': 321}, {'label': 'BOAT', 'start_frame': 459, 'end_frame': 546}]
+  [3] user3 | P3_S10_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 751 | Emitted: 4
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT', 'FEBRUARY']
+    WER          : 0.3333
+    Emit regions : [(75, 159, np.str_('SMALL')), (257, 383, np.str_('FEBRUARY')), (489, 587, np.str_('BOAT')), (697, 749, np.str_('FEBRUARY'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 62, 'end_frame': 148}, {'label': 'FEBRUARY', 'start_frame': 254, 'end_frame': 359}, {'label': 'BOAT', 'start_frame': 482, 'end_frame': 573}]
+  [4] user3 | P3_S10_R4
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(62, 149, np.str_('SMALL')), (229, 357, np.str_('FEBRUARY')), (471, 568, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 51, 'end_frame': 128}, {'label': 'FEBRUARY', 'start_frame': 241, 'end_frame': 337}, {'label': 'BOAT', 'start_frame': 462, 'end_frame': 554}]
+  [5] user3 | P3_S10_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(66, 154, np.str_('SMALL')), (284, 410, np.str_('FEBRUARY')), (502, 597, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 54, 'end_frame': 132}, {'label': 'FEBRUARY', 'start_frame': 279, 'end_frame': 386}, {'label': 'BOAT', 'start_frame': 495, 'end_frame': 582}]

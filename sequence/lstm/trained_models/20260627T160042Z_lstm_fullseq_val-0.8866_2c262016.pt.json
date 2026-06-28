@@ -1,0 +1,19 @@
+{
+  "model_name": "lstm_fullseq",
+  "saved_at_utc": "20260627T160042Z",
+  "uid": "2c262016",
+  "best_val_acc": 0.8865833333333333,
+  "normalization": "palm_ref",
+  "git_sha": "fc11f1b",
+  "test_user": "user3",
+  "dev_users": [
+    "user1",
+    "user2",
+    "user5"
+  ],
+  "feat_dim": 128,
+  "hidden_size": 256,
+  "num_layers": 2,
+  "test_mean_wer": 0.38636363636363635,
+  "best_val_f1": 0.8463035187627318
+}

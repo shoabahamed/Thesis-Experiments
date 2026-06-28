@@ -2,11 +2,15 @@
 Evaluation: frame-level metrics and streaming WER evaluation harness.
 
 Provides:
-  - evaluate_lstm_full : frame-level accuracy + classification report
-  - evaluate_lstm_wer  : streaming WER evaluation over a catalog of recordings
+  - evaluate_lstm_full           : frame-level accuracy + classification report
+  - evaluate_lstm_wer            : streaming WER evaluation over a catalog of recordings
+  - evaluate_streaming_metrics   : SHREC'21 streaming metrics (DR, FPR, Jaccard)
+                                   using both original (baseline) and corrected modules
 """
 from __future__ import annotations
 
+import json
+import os
 from typing import Callable
 
 import numpy as np
@@ -30,6 +34,22 @@ from config import (
 )
 from decoder import stream_lstm_online
 from utils import compute_wer
+
+# Streaming metrics — Duo Streamers baseline (bugs preserved)
+from metrics_original import (
+    initialize_globals as init_orig,
+    evaluate_detection_rate as eval_dr_orig,
+    evaluate_model_with_fpr as eval_fpr_orig,
+    evaluate_jaccard_index as eval_jac_orig,
+    print_global_results as print_orig,
+)
+
+# Streaming metrics — corrected SHREC'21 protocol
+from metrics_corrected import (
+    initialize_globals as init_corr,
+    evaluate_all as eval_all_corr,
+    print_global_results as print_corr,
+)
 
 
 # ──────────────────────────────────────────────────────────────────────
@@ -99,6 +119,200 @@ def print_frame_level_report(
         summary_rows.append({"split": split_name, "frame_accuracy": acc})
 
     return pd.DataFrame(summary_rows)
+
+
+# ──────────────────────────────────────────────────────────────────────
+# Streaming metrics helpers (bridge from decoder output → metrics input)
+# ──────────────────────────────────────────────────────────────────────
+
+def _build_metrics_inputs(
+    sample: dict,
+    stream_steps: list[dict],
+    emit_regions: list[tuple],
+    label_to_id: dict[str, int],
+    background_label: str,
+    num_classes: int,
+) -> tuple[list[int], list[int], list[int], list[int], int]:
+    """Convert decoder output into the four arrays expected by the metrics modules.
+
+    Returns
+    -------
+    frame_sequence : flat [s0, e0, s1, e1, ...] ground-truth boundaries
+    y_true         : list of GT class indices (one per gesture, 0-based, no background)
+    gating_list    : flat [s0, e0, s1, e1, ...] predicted boundaries
+    y_pred_list    : per-frame class index, -1 for background
+    seq_len        : total number of frames
+    """
+    seq_len = int(sample["num_frames"])
+
+    # ── Ground truth: frame_sequence + y_true ──
+    # sample["segmentation_regions"] contains non-background intervals:
+    #   [{"label": "book", "start_frame": 10, "end_frame": 45}, ...]
+    frame_sequence: list[int] = []
+    y_true: list[int] = []
+
+    gt_regions = sample.get("segmentation_regions", [])
+    for region in gt_regions:
+        label_str = region["label"]
+        if label_str == background_label:
+            continue
+        cls_id = label_to_id.get(label_str)
+        if cls_id is None:
+            continue  # label unseen in training
+        frame_sequence.append(int(region["start_frame"]))
+        frame_sequence.append(int(region["end_frame"]))
+        y_true.append(cls_id)
+
+    # ── Predicted boundaries: gating_list ──
+    # emit_regions is [(start_frame, end_frame, label_str), ...]
+    gating_list: list[int] = []
+    for (start, end, _label) in emit_regions:
+        gating_list.append(int(start))
+        gating_list.append(int(end))
+
+    # ── Per-frame predictions: y_pred_list ──
+    # Default to -1 (background). Fill from stream_steps.
+    y_pred_list: list[int] = [-1] * seq_len
+
+    bg_id = label_to_id.get(background_label)
+
+    for step in stream_steps:
+        fi = step.get("frame_index")
+        if fi is None or fi < 0 or fi >= seq_len:
+            continue
+        voted_label_str = step.get("voted_label", background_label)
+        if voted_label_str == background_label:
+            continue  # leave as -1
+        cls_id = label_to_id.get(voted_label_str)
+        if cls_id is not None and cls_id != bg_id:
+            y_pred_list[fi] = cls_id
+
+    return frame_sequence, y_true, gating_list, y_pred_list, seq_len
+
+
+# ──────────────────────────────────────────────────────────────────────
+# SHREC'21 streaming metrics evaluation
+# ──────────────────────────────────────────────────────────────────────
+
+def evaluate_streaming_metrics(
+    samples: list[dict],
+    split_name: str,
+    model_obj: nn.Module,
+    normalize_fn: Callable[[np.ndarray], np.ndarray],
+    label_to_id: dict[str, int],
+    id_to_label: dict[int, str],
+    num_classes: int,
+    background_label: str          = BACKGROUND_LABEL,
+    bag_size: int                  = BAG_SIZE,
+    aggregation: str               = BAG_AGGREGATION,
+    confidence_threshold: float    = CONFIDENCE_THRESHOLD,
+    sign_bg_margin: float          = SIGN_BG_MARGIN,
+    min_sign_frames: int           = MIN_SIGN_FRAMES,
+    run_original: bool             = True,
+    run_corrected: bool            = True,
+) -> None:
+    """Run SHREC'21 streaming metrics over a catalog of recording samples.
+
+    Calls the existing streaming decoder per sequence, converts its output
+    into the format expected by ``metrics_original`` and ``metrics_corrected``,
+    and accumulates results globally. Call ``print_streaming_metrics_results``
+    afterwards to display.
+
+    Parameters
+    ----------
+    samples          : WER-catalog-style dicts (each has V, segmentation_regions, …)
+    split_name       : label for logging (e.g. "Test (user3)")
+    model_obj        : trained LSTM model with .step() method
+    normalize_fn     : per-frame normalization function
+    label_to_id      : string → class-index mapping
+    id_to_label      : class-index → string mapping
+    num_classes      : total number of classes (including background)
+    run_original     : whether to run the buggy Duo Streamers baseline metrics
+    run_corrected    : whether to run the corrected SHREC'21 metrics
+    """
+    # Build class names in index order for final printout
+    class_names = [id_to_label.get(i, f"class_{i}") for i in range(num_classes)]
+
+    # Initialize accumulators
+    if run_original:
+        init_orig(n_classes=num_classes)
+    if run_corrected:
+        init_corr(n_classes=num_classes)
+
+    print(f"\n{'='*60}")
+    print(f"STREAMING METRICS EVALUATION — {split_name}")
+    print(f"{'='*60}")
+    print(f"Sequences: {len(samples)} | Classes: {num_classes}")
+    print(f"Running: {'original+corrected' if run_original and run_corrected else 'corrected' if run_corrected else 'original'}")
+    print()
+
+    for idx, sample in enumerate(samples, start=1):
+        # Run decoder
+        stream_steps, emitted_preds, emit_regions = stream_lstm_online(
+            V=sample["V"],
+            model_obj=model_obj,
+            normalize_fn=normalize_fn,
+            id_to_label=id_to_label,
+            background_label=background_label,
+            bag_size=bag_size,
+            aggregation=aggregation,
+            confidence_threshold=confidence_threshold,
+            sign_bg_margin=sign_bg_margin,
+            min_sign_frames=min_sign_frames,
+        )
+
+        # Convert to metrics format
+        frame_sequence, y_true, gating_list, y_pred_list, seq_len = (
+            _build_metrics_inputs(
+                sample, stream_steps, emit_regions,
+                label_to_id, background_label, num_classes,
+            )
+        )
+
+        # Skip sequences with no GT gestures or no predictions
+        if len(y_true) == 0:
+            continue
+        if len(gating_list) == 0:
+            # No detections — still feed to metrics so FN is counted
+            pass
+
+        # Feed to original (buggy) metrics
+        if run_original:
+            eval_dr_orig(
+                frame_sequence, y_true, gating_list, y_pred_list,
+                n_classes=num_classes, verbose=False,
+            )
+            # FPR and Jaccard were commented-out in the notebook;
+            # run them here for completeness, but note they have bugs.
+            if len(gating_list) > 0:
+                eval_fpr_orig(
+                    frame_sequence, y_true, gating_list, y_pred_list,
+                    n_classes=num_classes, verbose=False,
+                )
+                eval_jac_orig(
+                    frame_sequence, y_true, gating_list, y_pred_list,
+                    n_classes=num_classes, verbose=False,
+                )
+
+        # Feed to corrected metrics
+        if run_corrected:
+            eval_all_corr(
+                frame_sequence, y_true, gating_list, y_pred_list,
+                seq_len=seq_len, n_classes=num_classes, verbose=False,
+            )
+
+    # Print results
+    if run_original:
+        print(f"\n{'─'*60}")
+        print(f"ORIGINAL METRICS (Duo Streamers baseline) — {split_name}")
+        print(f"{'─'*60}")
+        print_orig(class_names=class_names)
+
+    if run_corrected:
+        print(f"\n{'─'*60}")
+        print(f"CORRECTED METRICS (SHREC'21 protocol) — {split_name}")
+        print(f"{'─'*60}")
+        print_corr(class_names=class_names)
 
 
 # ──────────────────────────────────────────────────────────────────────
@@ -219,3 +433,198 @@ def evaluate_lstm_wer(
         df, split_name, normalization_name, STREAM_MODE, print_examples,
     )
     return df
+
+
+# ──────────────────────────────────────────────────────────────────────
+# Persist streaming results (metadata + per-frame arrays)
+# ──────────────────────────────────────────────────────────────────────
+
+DEFAULT_RESULTS_DIR = "wer_results"
+
+
+def save_split_results(
+    df: pd.DataFrame,
+    split_name: str,
+    results_dir: str = DEFAULT_RESULTS_DIR,
+) -> dict[str, str]:
+    """Save WER DataFrame metadata and per-frame arrays for one split.
+
+    Two files per split:
+        {slug}_metadata.parquet — all scalar/list columns, one row per sequence
+        {slug}_arrays.npz       — per-frame arrays (logits, probs, labels, …)
+                                  indexed by recording_id
+
+    Parameters
+    ----------
+    df          : DataFrame returned by evaluate_lstm_wer()
+    split_name  : e.g. "Test (user3)" — used as filename slug
+    results_dir : directory to write into (created if missing)
+
+    Returns
+    -------
+    dict with paths {"parquet": ..., "npz": ...}
+    """
+    os.makedirs(results_dir, exist_ok=True)
+    slug = (
+        split_name.lower()
+        .replace(" ", "_")
+        .replace("(", "")
+        .replace(")", "")
+    )
+
+    # ── 1. Metadata (drop heavy stream_steps column) ──
+    df_meta = df.drop(columns=["stream_steps"], errors="ignore").copy()
+
+    # Serialize list-of-tuple columns to JSON strings for parquet compat
+    for col in ["emit_regions", "gt_segments"]:
+        if col in df_meta.columns:
+            df_meta[col] = df_meta[col].apply(
+                lambda x: json.dumps(x) if x is not None else "[]"
+            )
+
+    parquet_path = os.path.join(results_dir, f"{slug}_metadata.parquet")
+    df_meta.to_parquet(parquet_path, index=False)
+
+    # ── 2. Per-frame arrays (logits, probs, labels, etc.) ──
+    arrays_dict: dict[str, np.ndarray] = {}
+
+    for row_idx, row in df.iterrows():
+        steps = row.get("stream_steps")
+        if not steps:
+            continue
+
+        rec_id = str(row["recording_id"]).replace("/", "_")
+        prefix = f"{row_idx}__{rec_id}"
+
+        # Infer num_classes from first non-None logit
+        C = None
+        for s in steps:
+            pre = s.get("pre_bag_logits")
+            if pre is not None:
+                C = len(pre)
+                break
+        if C is None:
+            for s in steps:
+                post = s.get("post_bag_probs")
+                if post is not None:
+                    C = len(post)
+                    break
+        if C is None:
+            continue  # no logit data at all
+
+        nan_fill = np.full(C, np.nan, dtype=np.float32)
+
+        pre_bag_list = [
+            s.get("pre_bag_logits") if s.get("pre_bag_logits") is not None
+            else nan_fill
+            for s in steps
+        ]
+        post_bag_list = [
+            s.get("post_bag_probs") if s.get("post_bag_probs") is not None
+            else nan_fill
+            for s in steps
+        ]
+
+        arrays_dict[f"{prefix}__pre_bag_logits"] = np.stack(
+            pre_bag_list, axis=0
+        ).astype(np.float32)
+        arrays_dict[f"{prefix}__post_bag_probs"] = np.stack(
+            post_bag_list, axis=0
+        ).astype(np.float32)
+        arrays_dict[f"{prefix}__frame_indices"] = np.array(
+            [s["frame_index"] for s in steps], dtype=np.int32,
+        )
+        arrays_dict[f"{prefix}__raw_labels"] = np.array(
+            [s["raw_label"] for s in steps], dtype=object,
+        )
+        arrays_dict[f"{prefix}__voted_labels"] = np.array(
+            [s["voted_label"] for s in steps], dtype=object,
+        )
+        arrays_dict[f"{prefix}__raw_conf"] = np.array(
+            [float(s["raw_conf"]) for s in steps], dtype=np.float32,
+        )
+        arrays_dict[f"{prefix}__bg_conf"] = np.array(
+            [float(s["bg_conf"]) for s in steps], dtype=np.float32,
+        )
+        arrays_dict[f"{prefix}__states"] = np.array(
+            [s["state"] for s in steps], dtype=object,
+        )
+
+    npz_path = os.path.join(results_dir, f"{slug}_arrays.npz")
+    np.savez_compressed(npz_path, **arrays_dict)
+
+    print(f"[{split_name}] metadata → {parquet_path}")
+    print(f"[{split_name}] arrays   → {npz_path}")
+    print(f"  sequences : {len(df)}")
+    print(f"  npz keys  : {len(arrays_dict)}")
+
+    return {"parquet": parquet_path, "npz": npz_path}
+
+
+def load_split_results(
+    split_name: str,
+    results_dir: str = DEFAULT_RESULTS_DIR,
+) -> tuple[pd.DataFrame, dict]:
+    """Load metadata DataFrame and per-frame arrays for one split.
+
+    Returns
+    -------
+    df     : DataFrame with scalar/list columns restored
+    arrays : dict — keys are "{row_idx}__{rec_id}__{field}", values np.ndarray
+    """
+    slug = (
+        split_name.lower()
+        .replace(" ", "_")
+        .replace("(", "")
+        .replace(")", "")
+    )
+    parquet_path = os.path.join(results_dir, f"{slug}_metadata.parquet")
+    npz_path     = os.path.join(results_dir, f"{slug}_arrays.npz")
+
+    df = pd.read_parquet(parquet_path)
+
+    # Deserialize JSON strings back to Python lists
+    for col in ["emit_regions", "gt_segments"]:
+        if col in df.columns:
+            df[col] = df[col].apply(
+                lambda x: (
+                    [tuple(r) for r in json.loads(x)]
+                    if isinstance(x, str) else []
+                )
+            )
+
+    npz    = np.load(npz_path, allow_pickle=True)
+    arrays = {k: npz[k] for k in npz.files}
+
+    return df, arrays
+
+
+def get_sequence_arrays(
+    row: pd.Series,
+    arrays: dict,
+) -> dict:
+    """Extract all per-frame arrays for one DataFrame row.
+
+    Usage
+    -----
+    df, arrays = load_split_results("test (user3)")
+    seq = get_sequence_arrays(df.iloc[0], arrays)
+    seq["pre_bag_logits"]   # (T, C)
+    seq["post_bag_probs"]   # (T, C)  — first (bag_size-1) rows are NaN
+    seq["frame_indices"]    # (T,)
+    """
+    row_idx = row.name
+    rec_id  = str(row["recording_id"]).replace("/", "_")
+    prefix  = f"{row_idx}__{rec_id}"
+
+    fields = [
+        "pre_bag_logits", "post_bag_probs",
+        "frame_indices",
+        "raw_labels", "voted_labels",
+        "raw_conf", "bg_conf",
+        "states",
+    ]
+    return {
+        field: arrays.get(f"{prefix}__{field}")
+        for field in fields
+    }

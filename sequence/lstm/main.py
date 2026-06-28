@@ -56,11 +56,17 @@ from config import (
 from data_loading import load_all_segments
 from data_splitting import prepare_split
 from dataset import FullSequenceDataset, collate_full_sequences
-from evaluation import evaluate_lstm_wer, print_frame_level_report
+from evaluation import (
+    evaluate_lstm_wer,
+    evaluate_streaming_metrics,
+    print_frame_level_report,
+    save_split_results,
+)
 from features import palm_reference_normalize_sequence
 from model import FullSequenceLSTM
 from trainer import train_lstm_model
 from utils import (
+    FocalLoss,
     TeeLogger,
     compute_class_weights,
     plot_training_curves,
@@ -121,6 +127,8 @@ def run_single_fold(
     epochs: int,
     lr: float,
     save_dir: str = "trained_models",
+    use_focal_loss: bool = False,
+    focal_gamma: float = 2.0,
 ) -> dict:
     """Run a complete train→evaluate cycle for one fold.
 
@@ -143,7 +151,14 @@ def run_single_fold(
     # ── 3. Class weights + loss ──
     num_classes = split_data["num_classes"]
     class_weight_tensor = compute_class_weights(train_ds, num_classes)
-    criterion = nn.CrossEntropyLoss(weight=class_weight_tensor, ignore_index=-1)
+    if use_focal_loss:
+        criterion = FocalLoss(
+            weight=class_weight_tensor, gamma=focal_gamma, ignore_index=-1,
+        )
+        print(f"Loss function: FocalLoss (gamma={focal_gamma}, weighted)")
+    else:
+        criterion = nn.CrossEntropyLoss(weight=class_weight_tensor, ignore_index=-1)
+        print(f"Loss function: CrossEntropyLoss (weighted)")
 
     # ── 4. Model ──
     model = FullSequenceLSTM(
@@ -188,6 +203,7 @@ def run_single_fold(
 
     # ── 7. WER evaluation ──
     id_to_label = split_data["id_to_label"]
+    results_dir = os.path.join(save_dir, "results")
 
     test_wer_df = pd.DataFrame()
     if split_data["test_wer_catalog"]:
@@ -200,6 +216,7 @@ def run_single_fold(
             normalization_name=NORMALIZATION_NAME,
             print_examples=WER_EXAMPLE_PRINT_COUNT,
         )
+        save_split_results(test_wer_df, split_name=f"test_{test_user}", results_dir=results_dir)
 
     val_wer_df = pd.DataFrame()
     if split_data["dev_val_wer_catalog"]:
@@ -211,6 +228,19 @@ def run_single_fold(
             id_to_label=id_to_label,
             normalization_name=NORMALIZATION_NAME,
             print_examples=WER_EXAMPLE_PRINT_COUNT,
+        )
+        save_split_results(val_wer_df, split_name=f"val_{test_user}", results_dir=results_dir)
+
+    # ── 7b. Streaming metrics (SHREC'21: DR, FPR, Jaccard) ──
+    if split_data["test_wer_catalog"]:
+        evaluate_streaming_metrics(
+            samples=split_data["test_wer_catalog"],
+            split_name=f"Test ({test_user})",
+            model_obj=model,
+            normalize_fn=NORMALIZE_FN,
+            label_to_id=split_data["label_to_id"],
+            id_to_label=id_to_label,
+            num_classes=num_classes,
         )
 
     # ── 8. Save model ──
@@ -229,6 +259,7 @@ def run_single_fold(
             "hidden_size": HIDDEN_SIZE,
             "num_layers": NUM_LSTM_LAYERS,
             "test_mean_wer": test_mean_wer,
+            "best_val_f1": train_result["best_val_f1"],
         },
     )
 
@@ -244,6 +275,7 @@ def run_single_fold(
         "test_user": test_user,
         "dev_users": dev_users,
         "best_val_acc": train_result["best_val_acc"],
+        "best_val_f1": train_result["best_val_f1"],
         "test_mean_wer": test_mean_wer,
         "test_wer_df": test_wer_df,
         "val_wer_df": val_wer_df,
@@ -262,6 +294,10 @@ def main():
         help="Run leave-one-out user cross-validation over all users.",
     )
     parser.add_argument(
+        "--test-mode", action="store_true",
+        help="Run in test mode with a tiny subset of data (2 recordings per user) to quickly verify execution.",
+    )
+    parser.add_argument(
         "--test-user", type=str, default=DEFAULT_TEST_USER,
         help=f"Test user for single-split mode (default: {DEFAULT_TEST_USER}).",
     )
@@ -276,6 +312,18 @@ def main():
     parser.add_argument(
         "--save-dir", type=str, default="trained_models",
         help="Directory to save model checkpoints.",
+    )
+    parser.add_argument(
+        "--comment", type=str, default="",
+        help="Custom comment to print at the top of the log/run history.",
+    )
+    parser.add_argument(
+        "--focal-loss", action="store_true",
+        help="Use Focal Loss instead of CrossEntropyLoss.",
+    )
+    parser.add_argument(
+        "--focal-gamma", type=float, default=2.0,
+        help="Gamma parameter for Focal Loss (default: 2.0).",
     )
 
     args = parser.parse_args()
@@ -292,6 +340,9 @@ def main():
     try:
         print(f"[ignoring loop detection]")
         print(f"==================================================")
+        if args.comment:
+            print(f"COMMENT: {args.comment}")
+            print(f"==================================================")
         print(f"RUN START TIME (UTC): {ts}")
         print(f"Log filepath        : {log_filepath}")
         print(f"==================================================")
@@ -305,6 +356,7 @@ def main():
         print(f"  Seed              : {SEED}")
         print(f"  Dev-Val Ratio     : {DEV_VAL_RATIO}")
         print(f"  Batch size        : {BATCH_SIZE}")
+        print(f"  Test mode         : {args.test_mode}")
         print(f"  Model name        : {MODEL_NAME}")
         print(f"  Normalization     : {NORMALIZATION_NAME}")
         print(f"  Learning rate     : {args.lr}")
@@ -315,6 +367,7 @@ def main():
         print(f"  Dropout           : {DROPOUT}")
         print(f"  Decoder bag size  : {BAG_SIZE}")
         print(f"  Decoder threshold : {CONFIDENCE_THRESHOLD}")
+        print(f"  Loss function     : {'FocalLoss (gamma=' + str(args.focal_gamma) + ')' if args.focal_loss else 'CrossEntropyLoss'}")
         print(f"==================================================\n")
 
         print(f"Using device: {DEVICE}")
@@ -322,6 +375,24 @@ def main():
 
         # ── Load all data once ──
         _, segments_by_user = load_all_segments(DATASET_ROOT)
+        
+        if args.test_mode:
+            print(f"\n[!] TEST MODE ENABLED: Limiting to 2 recordings per user.")
+            for user in segments_by_user:
+                seen_recs = []
+                filtered_segments = []
+                for s in segments_by_user[user]:
+                    rid = s["recording_id"]
+                    if rid not in seen_recs:
+                        if len(seen_recs) >= 2:
+                            continue
+                        seen_recs.append(rid)
+                    filtered_segments.append(s)
+                segments_by_user[user] = filtered_segments
+                
+            args.epochs = min(args.epochs, 2)
+            print(f"[!] TEST MODE: Limiting training to {args.epochs} epoch(s).")
+
         available_users = sorted(segments_by_user.keys())
         print(f"Available users: {available_users}")
 
@@ -349,6 +420,8 @@ def main():
                 epochs=args.epochs,
                 lr=args.lr,
                 save_dir=args.save_dir,
+                use_focal_loss=args.focal_loss,
+                focal_gamma=args.focal_gamma,
             )
             all_fold_results.append(fold_result)
 
@@ -363,6 +436,7 @@ def main():
                 "test_user": r["test_user"],
                 "dev_users": ", ".join(r["dev_users"]),
                 "best_val_acc": r["best_val_acc"],
+                "best_val_f1": r["best_val_f1"],
                 "test_mean_wer": r["test_mean_wer"],
                 "saved_path": r["saved_path"],
             })
@@ -376,10 +450,12 @@ def main():
                 if r["test_mean_wer"] is not None
             ]
             accs = [r["best_val_acc"] for r in all_fold_results]
+            f1s = [r["best_val_f1"] for r in all_fold_results]
             if wers:
                 import numpy as np
-                print(f"\nLOUO Mean WER:  {np.mean(wers):.4f} ± {np.std(wers):.4f}")
+                print(f"\nLOUO Mean WER:     {np.mean(wers):.4f} ± {np.std(wers):.4f}")
                 print(f"LOUO Mean Val Acc: {np.mean(accs):.4f} ± {np.std(accs):.4f}")
+                print(f"LOUO Mean Val F1:  {np.mean(f1s):.4f} ± {np.std(f1s):.4f}")
 
     finally:
         logger.close()

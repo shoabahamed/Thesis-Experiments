@@ -1,0 +1,3076 @@
+[ignoring loop detection]
+==================================================
+COMMENT: running with f1 score to store the best model everything else is same as before
+==================================================
+RUN START TIME (UTC): 20260627T114551Z
+Log filepath        : trained_models\logs\run_single_user3_20260627T114551Z.log
+==================================================
+COMMAND LINE ARGUMENTS:
+  --louo      : False
+  --test_mode : False
+  --test_user : user3
+  --epochs    : 50
+  --lr        : 0.0003
+  --save_dir  : trained_models
+  --comment   : running with f1 score to store the best model everything else is same as before
+  --focal_loss: False
+  --focal_gamma: 2.0
+==================================================
+CENTRAL HYPERPARAMETERS:
+  Device            : cuda
+  Dataset root      : C:\Shoab\Thesis\Experiments\dataset
+  Seed              : 42
+  Dev-Val Ratio     : 0.12
+  Batch size        : 4
+  Test mode         : False
+  Model name        : lstm_fullseq
+  Normalization     : palm_ref
+  Learning rate     : 0.0003
+  Epochs            : 50
+  Feature dim       : 128
+  Hidden size       : 256
+  Num layers        : 2
+  Dropout           : 0.2
+  Decoder bag size  : 5
+  Decoder threshold : 0.35
+  Loss function     : CrossEntropyLoss
+==================================================
+
+Using device: cuda
+Dataset root: C:\Shoab\Thesis\Experiments\dataset
+Matched recordings per user:
+  user1: 76 recordings
+  user2: 73 recordings
+  user3: 55 recordings
+  user5: 72 recordings
+
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+[A
+
+Total raw segments (sign + background): 2293
+Available users: ['user1', 'user2', 'user3', 'user5']
+
+======================================================================
+FOLD: test_user=user3, dev_users=['user1', 'user2', 'user5']
+======================================================================
+
+============================================================
+SPLIT: test_user=user3, dev_users=['user1', 'user2', 'user5']
+============================================================
+Dev removed by filter   : {'missing_data': 1, 'low_confidence': 1, 'too_short': 4}
+Test removed by filter  : {'too_short': 1}
+Train segments (filtered): 1558
+Val segments (filtered)  : 272
+Test segments (filtered) : 457
+Label mapping (string -> ID):
+  np.str_('AUGUST') -> 0
+  np.str_('BIG') -> 1
+  np.str_('BIRD') -> 2
+  np.str_('BOAT') -> 3
+  np.str_('COME') -> 4
+  np.str_('DRIVER') -> 5
+  np.str_('FARMING') -> 6
+  np.str_('FEBRUARY') -> 7
+  np.str_('GO') -> 8
+  np.str_('GREETINGS') -> 9
+  np.str_('OUR') -> 10
+  np.str_('READ') -> 11
+  np.str_('SMALL') -> 12
+  np.str_('TIGER') -> 13
+  np.str_('TRAIN') -> 14
+  np.str_('UGLY') -> 15
+  np.str_('VAN') -> 16
+  np.str_('WHAT') -> 17
+  np.str_('WHICH') -> 18
+  np.str_('WRITE') -> 19
+  np.str_('background') -> 20
+
+Total classes: 21
+Background class ID: 20
+WER catalog sizes -> train: 188, val: 33, test: 55
+Train batches: 47 | Val batches: 9 | Test batches: 14
+Loss function: CrossEntropyLoss (weighted)
+Model: lstm_fullseq | Trainable params: 991,509
+[lstm_fullseq] using normalization: palm_ref
+Stabilization: grad_clip=True (norm=1.0), scheduler=True, early_stopping_patience=15
+Model selection criterion: validation macro-F1
+  -> [lstm_fullseq] new best in memory (val_f1=0.6166, val_acc=0.7600)
+lstm_fullseq | Epoch 01 | Loss: 2.3355 | Train Acc: 0.3752 | Train F1: 0.2990 | Val Acc: 0.7600 | Val F1: 0.6166
+  -> [lstm_fullseq] new best in memory (val_f1=0.6504, val_acc=0.7733)
+lstm_fullseq | Epoch 02 | Loss: 1.3954 | Train Acc: 0.6909 | Train F1: 0.5626 | Val Acc: 0.7733 | Val F1: 0.6504
+  -> [lstm_fullseq] new best in memory (val_f1=0.6765, val_acc=0.7581)
+lstm_fullseq | Epoch 03 | Loss: 1.0198 | Train Acc: 0.6911 | Train F1: 0.6195 | Val Acc: 0.7581 | Val F1: 0.6765
+  -> [lstm_fullseq] new best in memory (val_f1=0.7392, val_acc=0.8075)
+lstm_fullseq | Epoch 04 | Loss: 0.7815 | Train Acc: 0.7194 | Train F1: 0.6652 | Val Acc: 0.8075 | Val F1: 0.7392
+  -> [lstm_fullseq] new best in memory (val_f1=0.7457, val_acc=0.8006)
+lstm_fullseq | Epoch 05 | Loss: 0.6551 | Train Acc: 0.7183 | Train F1: 0.6746 | Val Acc: 0.8006 | Val F1: 0.7457
+  -> [lstm_fullseq] new best in memory (val_f1=0.7472, val_acc=0.8000)
+lstm_fullseq | Epoch 06 | Loss: 0.5486 | Train Acc: 0.7509 | Train F1: 0.7036 | Val Acc: 0.8000 | Val F1: 0.7472
+  -> [lstm_fullseq] new best in memory (val_f1=0.7509, val_acc=0.8057)
+lstm_fullseq | Epoch 07 | Loss: 0.5131 | Train Acc: 0.7507 | Train F1: 0.7067 | Val Acc: 0.8057 | Val F1: 0.7509
+lstm_fullseq | Epoch 08 | Loss: 0.4504 | Train Acc: 0.7667 | Train F1: 0.7226 | Val Acc: 0.7680 | Val F1: 0.7195
+  -> [lstm_fullseq] new best in memory (val_f1=0.7699, val_acc=0.8213)
+lstm_fullseq | Epoch 09 | Loss: 0.4019 | Train Acc: 0.7723 | Train F1: 0.7302 | Val Acc: 0.8213 | Val F1: 0.7699
+lstm_fullseq | Epoch 10 | Loss: 0.4096 | Train Acc: 0.7800 | Train F1: 0.7337 | Val Acc: 0.7972 | Val F1: 0.7505
+lstm_fullseq | Epoch 11 | Loss: 0.3696 | Train Acc: 0.7955 | Train F1: 0.7481 | Val Acc: 0.8140 | Val F1: 0.7587
+  -> [lstm_fullseq] new best in memory (val_f1=0.7886, val_acc=0.8430)
+lstm_fullseq | Epoch 12 | Loss: 0.3392 | Train Acc: 0.7955 | Train F1: 0.7513 | Val Acc: 0.8430 | Val F1: 0.7886
+  -> [lstm_fullseq] new best in memory (val_f1=0.8145, val_acc=0.8615)
+lstm_fullseq | Epoch 13 | Loss: 0.3252 | Train Acc: 0.7848 | Train F1: 0.7473 | Val Acc: 0.8615 | Val F1: 0.8145
+lstm_fullseq | Epoch 14 | Loss: 0.3008 | Train Acc: 0.7930 | Train F1: 0.7555 | Val Acc: 0.8059 | Val F1: 0.7650
+lstm_fullseq | Epoch 15 | Loss: 0.2823 | Train Acc: 0.8099 | Train F1: 0.7681 | Val Acc: 0.8035 | Val F1: 0.7660
+lstm_fullseq | Epoch 16 | Loss: 0.2571 | Train Acc: 0.8253 | Train F1: 0.7835 | Val Acc: 0.8156 | Val F1: 0.7801
+lstm_fullseq | Epoch 17 | Loss: 0.2443 | Train Acc: 0.8140 | Train F1: 0.7769 | Val Acc: 0.8295 | Val F1: 0.7918
+lstm_fullseq | Epoch 18 | Loss: 0.2253 | Train Acc: 0.8371 | Train F1: 0.7977 | Val Acc: 0.8199 | Val F1: 0.7865
+lstm_fullseq | Epoch 19 | Loss: 0.2145 | Train Acc: 0.8418 | Train F1: 0.8020 | Val Acc: 0.8151 | Val F1: 0.7747
+lstm_fullseq | Epoch 20 | Loss: 0.1829 | Train Acc: 0.8511 | Train F1: 0.8141 | Val Acc: 0.8025 | Val F1: 0.7711
+  -> [lstm_fullseq] new best in memory (val_f1=0.8339, val_acc=0.8743)
+lstm_fullseq | Epoch 21 | Loss: 0.1657 | Train Acc: 0.8546 | Train F1: 0.8197 | Val Acc: 0.8743 | Val F1: 0.8339
+lstm_fullseq | Epoch 22 | Loss: 0.1554 | Train Acc: 0.8676 | Train F1: 0.8329 | Val Acc: 0.8364 | Val F1: 0.8002
+lstm_fullseq | Epoch 23 | Loss: 0.1525 | Train Acc: 0.8606 | Train F1: 0.8276 | Val Acc: 0.8729 | Val F1: 0.8329
+lstm_fullseq | Epoch 24 | Loss: 0.1403 | Train Acc: 0.8623 | Train F1: 0.8301 | Val Acc: 0.8554 | Val F1: 0.8156
+lstm_fullseq | Epoch 25 | Loss: 0.1409 | Train Acc: 0.8630 | Train F1: 0.8299 | Val Acc: 0.8709 | Val F1: 0.8315
+lstm_fullseq | Epoch 26 | Loss: 0.1327 | Train Acc: 0.8679 | Train F1: 0.8361 | Val Acc: 0.8484 | Val F1: 0.8050
+lstm_fullseq | Epoch 27 | Loss: 0.1285 | Train Acc: 0.8750 | Train F1: 0.8435 | Val Acc: 0.8574 | Val F1: 0.8167
+lstm_fullseq | Epoch 28 | Loss: 0.1093 | Train Acc: 0.8823 | Train F1: 0.8522 | Val Acc: 0.8653 | Val F1: 0.8260
+lstm_fullseq | Epoch 29 | Loss: 0.1050 | Train Acc: 0.8866 | Train F1: 0.8570 | Val Acc: 0.8707 | Val F1: 0.8313
+lstm_fullseq | Epoch 30 | Loss: 0.1011 | Train Acc: 0.8879 | Train F1: 0.8591 | Val Acc: 0.8624 | Val F1: 0.8270
+lstm_fullseq | Epoch 31 | Loss: 0.0963 | Train Acc: 0.8869 | Train F1: 0.8593 | Val Acc: 0.8594 | Val F1: 0.8225
+lstm_fullseq | Epoch 32 | Loss: 0.0954 | Train Acc: 0.8866 | Train F1: 0.8583 | Val Acc: 0.8678 | Val F1: 0.8331
+lstm_fullseq | Epoch 33 | Loss: 0.0958 | Train Acc: 0.8943 | Train F1: 0.8657 | Val Acc: 0.8685 | Val F1: 0.8294
+lstm_fullseq | Epoch 34 | Loss: 0.0871 | Train Acc: 0.8913 | Train F1: 0.8635 | Val Acc: 0.8622 | Val F1: 0.8241
+lstm_fullseq | Epoch 35 | Loss: 0.0852 | Train Acc: 0.9005 | Train F1: 0.8737 | Val Acc: 0.8529 | Val F1: 0.8185
+  -> [lstm_fullseq] new best in memory (val_f1=0.8363, val_acc=0.8740)
+lstm_fullseq | Epoch 36 | Loss: 0.0819 | Train Acc: 0.8975 | Train F1: 0.8718 | Val Acc: 0.8740 | Val F1: 0.8363
+lstm_fullseq | Epoch 37 | Loss: 0.0820 | Train Acc: 0.8936 | Train F1: 0.8679 | Val Acc: 0.8695 | Val F1: 0.8312
+lstm_fullseq | Epoch 38 | Loss: 0.0787 | Train Acc: 0.8999 | Train F1: 0.8740 | Val Acc: 0.8640 | Val F1: 0.8263
+lstm_fullseq | Epoch 39 | Loss: 0.0770 | Train Acc: 0.8993 | Train F1: 0.8726 | Val Acc: 0.8720 | Val F1: 0.8352
+lstm_fullseq | Epoch 40 | Loss: 0.0766 | Train Acc: 0.8988 | Train F1: 0.8737 | Val Acc: 0.8632 | Val F1: 0.8241
+lstm_fullseq | Epoch 41 | Loss: 0.0738 | Train Acc: 0.9019 | Train F1: 0.8766 | Val Acc: 0.8694 | Val F1: 0.8333
+lstm_fullseq | Epoch 42 | Loss: 0.0725 | Train Acc: 0.9020 | Train F1: 0.8765 | Val Acc: 0.8695 | Val F1: 0.8328
+lstm_fullseq | Epoch 43 | Loss: 0.0691 | Train Acc: 0.9055 | Train F1: 0.8814 | Val Acc: 0.8738 | Val F1: 0.8355
+  -> [lstm_fullseq] new best in memory (val_f1=0.8363, val_acc=0.8737)
+lstm_fullseq | Epoch 44 | Loss: 0.0695 | Train Acc: 0.9031 | Train F1: 0.8784 | Val Acc: 0.8737 | Val F1: 0.8363
+  -> [lstm_fullseq] new best in memory (val_f1=0.8390, val_acc=0.8755)
+lstm_fullseq | Epoch 45 | Loss: 0.0671 | Train Acc: 0.9106 | Train F1: 0.8870 | Val Acc: 0.8755 | Val F1: 0.8390
+lstm_fullseq | Epoch 46 | Loss: 0.0693 | Train Acc: 0.9028 | Train F1: 0.8779 | Val Acc: 0.8727 | Val F1: 0.8359
+lstm_fullseq | Epoch 47 | Loss: 0.0661 | Train Acc: 0.9061 | Train F1: 0.8816 | Val Acc: 0.8704 | Val F1: 0.8328
+lstm_fullseq | Epoch 48 | Loss: 0.0668 | Train Acc: 0.9107 | Train F1: 0.8863 | Val Acc: 0.8718 | Val F1: 0.8341
+lstm_fullseq | Epoch 49 | Loss: 0.0651 | Train Acc: 0.9068 | Train F1: 0.8827 | Val Acc: 0.8738 | Val F1: 0.8360
+  -> [lstm_fullseq] new best in memory (val_f1=0.8392, val_acc=0.8758)
+lstm_fullseq | Epoch 50 | Loss: 0.0653 | Train Acc: 0.9064 | Train F1: 0.8824 | Val Acc: 0.8758 | Val F1: 0.8392
+
+lstm_fullseq per-epoch summary:
+           model normalization  epoch  train_loss  train_batch_acc  train_f1   val_acc    val_f1
+40  lstm_fullseq      palm_ref     41    0.073805         0.901866  0.876612  0.869417  0.833284
+41  lstm_fullseq      palm_ref     42    0.072547         0.902005  0.876520  0.869500  0.832804
+42  lstm_fullseq      palm_ref     43    0.069073         0.905510  0.881376  0.873792  0.835485
+43  lstm_fullseq      palm_ref     44    0.069533         0.903081  0.878402  0.873667  0.836269
+44  lstm_fullseq      palm_ref     45    0.067064         0.910560  0.886994  0.875542  0.839024
+45  lstm_fullseq      palm_ref     46    0.069287         0.902774  0.877933  0.872667  0.835935
+46  lstm_fullseq      palm_ref     47    0.066062         0.906125  0.881626  0.870375  0.832803
+47  lstm_fullseq      palm_ref     48    0.066768         0.910699  0.886267  0.871792  0.834066
+48  lstm_fullseq      palm_ref     49    0.065142         0.906776  0.882692  0.873750  0.835950
+49  lstm_fullseq      palm_ref     50    0.065260         0.906447  0.882357  0.875792  0.839152
+[lstm_fullseq] best model restored from memory.
+
+========== TRAIN FRAME-LEVEL REPORT ==========
+Accuracy: 0.9075
+              precision    recall  f1-score   support
+
+      AUGUST       0.89      0.99      0.94      3391
+         BIG       0.73      1.00      0.85      2383
+        BIRD       0.75      1.00      0.86      2642
+        BOAT       0.76      0.99      0.86      2190
+        COME       0.70      1.00      0.82      2437
+      DRIVER       0.90      1.00      0.95      3988
+     FARMING       0.87      0.99      0.93      3018
+    FEBRUARY       0.87      1.00      0.93      3330
+          GO       0.74      1.00      0.85      1880
+   GREETINGS       0.88      0.99      0.93      2934
+         OUR       0.69      1.00      0.82      2002
+        READ       0.87      1.00      0.93      3734
+       SMALL       0.79      0.99      0.88      2740
+       TIGER       0.68      1.00      0.81      2118
+       TRAIN       0.84      1.00      0.91      2699
+        UGLY       0.81      1.00      0.89      2243
+         VAN       0.81      1.00      0.89      2274
+        WHAT       0.61      1.00      0.76       935
+       WHICH       0.85      0.99      0.92      2892
+       WRITE       0.88      1.00      0.94      2585
+  background       1.00      0.85      0.92     84235
+
+    accuracy                           0.91    136650
+   macro avg       0.81      0.99      0.88    136650
+weighted avg       0.93      0.91      0.91    136650
+
+
+========== VAL FRAME-LEVEL REPORT ==========
+Accuracy: 0.8758
+              precision    recall  f1-score   support
+
+      AUGUST       0.92      0.97      0.94       709
+         BIG       0.79      0.94      0.86       385
+        BIRD       0.70      0.90      0.79       559
+        BOAT       0.68      0.93      0.79       379
+        COME       0.78      0.97      0.86       403
+      DRIVER       0.87      0.93      0.90       724
+     FARMING       0.84      0.86      0.85       451
+    FEBRUARY       0.83      0.98      0.90       665
+          GO       0.73      0.96      0.83       324
+   GREETINGS       0.84      0.98      0.90       511
+         OUR       0.76      0.94      0.84       342
+        READ       0.88      0.99      0.93       678
+       SMALL       0.66      0.95      0.78       477
+       TIGER       0.45      0.97      0.61       345
+       TRAIN       0.87      0.94      0.91       496
+        UGLY       0.77      0.82      0.79       431
+         VAN       0.68      0.98      0.80       311
+        WHAT       0.60      0.97      0.74       198
+       WHICH       0.66      0.97      0.79       485
+       WRITE       0.84      0.99      0.91       508
+  background       0.99      0.83      0.90     14619
+
+    accuracy                           0.88     24000
+   macro avg       0.77      0.94      0.84     24000
+weighted avg       0.90      0.88      0.88     24000
+
+
+========== TEST FRAME-LEVEL REPORT ==========
+Accuracy: 0.7100
+              precision    recall  f1-score   support
+
+      AUGUST       0.89      0.74      0.81      1135
+         BIG       0.52      0.82      0.64       719
+        BIRD       0.69      0.59      0.64       845
+        BOAT       0.63      0.74      0.68       780
+        COME       0.82      0.67      0.74       621
+      DRIVER       0.76      0.96      0.85      1295
+     FARMING       0.76      0.75      0.75       982
+    FEBRUARY       0.25      0.95      0.40      1036
+          GO       0.40      0.86      0.54       381
+   GREETINGS       0.50      0.63      0.56       916
+         OUR       0.41      0.17      0.24       513
+        READ       0.74      0.85      0.79      1046
+       SMALL       0.70      0.81      0.75       894
+       TIGER       0.70      0.73      0.71       622
+       TRAIN       0.68      0.96      0.80       678
+        UGLY       0.50      0.16      0.24       741
+         VAN       0.23      0.84      0.37       819
+        WHAT       0.62      0.47      0.54       361
+       WHICH       0.59      0.96      0.73       784
+       WRITE       0.77      0.72      0.74      1088
+  background       0.92      0.69      0.79     24994
+
+    accuracy                           0.71     41250
+   macro avg       0.62      0.72      0.63     41250
+weighted avg       0.80      0.71      0.73     41250
+
+
+========== FRAME ACCURACY SUMMARY ==========
+split  frame_accuracy
+Train        0.907530
+  Val        0.875792
+ Test        0.710036
+
+========== TEST (USER3) WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : lstm_online
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 55
+Mean WER:   0.5061
+Median WER: 0.5000
+Std WER:    0.3627
+
+Showing 5 example sequence(s):
+  [1] user3 | P3_S10_R1
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(47, 115, np.str_('SMALL')), (269, 380, np.str_('FEBRUARY')), (484, 552, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 37, 'end_frame': 114}, {'label': 'FEBRUARY', 'start_frame': 264, 'end_frame': 360}, {'label': 'BOAT', 'start_frame': 479, 'end_frame': 558}]
+  [2] user3 | P3_S10_R2
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 751 | Emitted: 5
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'WHICH', 'BOAT', 'FEBRUARY']
+    WER          : 0.6667
+    Emit regions : [(43, 122, np.str_('SMALL')), (223, 344, np.str_('FEBRUARY')), (426, 453, np.str_('WHICH')), (463, 558, np.str_('BOAT')), (686, 749, np.str_('FEBRUARY'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 35, 'end_frame': 118}, {'label': 'FEBRUARY', 'start_frame': 219, 'end_frame': 321}, {'label': 'BOAT', 'start_frame': 459, 'end_frame': 546}]
+  [3] user3 | P3_S10_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 751 | Emitted: 6
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['FEBRUARY', 'SMALL', 'FEBRUARY', 'WHICH', 'BOAT', 'FEBRUARY']
+    WER          : 1.0000
+    Emit regions : [(24, 67, np.str_('FEBRUARY')), (72, 151, np.str_('SMALL')), (260, 385, np.str_('FEBRUARY')), (470, 487, np.str_('WHICH')), (489, 587, np.str_('BOAT')), (686, 749, np.str_('FEBRUARY'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 62, 'end_frame': 148}, {'label': 'FEBRUARY', 'start_frame': 254, 'end_frame': 359}, {'label': 'BOAT', 'start_frame': 482, 'end_frame': 573}]
+  [4] user3 | P3_S10_R4
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 4
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['BIG', 'SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.3333
+    Emit regions : [(27, 44, np.str_('BIG')), (56, 141, np.str_('SMALL')), (245, 358, np.str_('FEBRUARY')), (470, 555, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 51, 'end_frame': 128}, {'label': 'FEBRUARY', 'start_frame': 241, 'end_frame': 337}, {'label': 'BOAT', 'start_frame': 462, 'end_frame': 554}]
+  [5] user3 | P3_S10_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(65, 145, np.str_('SMALL')), (284, 413, np.str_('FEBRUARY')), (504, 575, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 54, 'end_frame': 132}, {'label': 'FEBRUARY', 'start_frame': 279, 'end_frame': 386}, {'label': 'BOAT', 'start_frame': 495, 'end_frame': 582}]
+
+========== DEV VAL WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : lstm_online
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 33
+Mean WER:   0.0808
+Median WER: 0.0000
+Std WER:    0.1747
+
+Showing 5 example sequence(s):
+  [1] user1 | P1_S10_R4
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(23, 126, np.str_('SMALL')), (221, 335, np.str_('FEBRUARY')), (374, 490, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 46, 'end_frame': 126}, {'label': 'FEBRUARY', 'start_frame': 221, 'end_frame': 327}, {'label': 'BOAT', 'start_frame': 371, 'end_frame': 454}]
+  [2] user1 | P1_S11_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 4
+    GT           : ['GO', 'UGLY', 'WRITE', 'AUGUST']
+    Prediction   : ['GO', 'UGLY', 'WRITE', 'AUGUST']
+    WER          : 0.0000
+    Emit regions : [(61, 123, np.str_('GO')), (179, 268, np.str_('UGLY')), (326, 385, np.str_('WRITE')), (465, 571, np.str_('AUGUST'))]
+    GT segments  : [{'label': 'GO', 'start_frame': 60, 'end_frame': 112}, {'label': 'UGLY', 'start_frame': 179, 'end_frame': 257}, {'label': 'WRITE', 'start_frame': 324, 'end_frame': 378}, {'label': 'AUGUST', 'start_frame': 458, 'end_frame': 560}]
+  [3] user1 | P1_S1_R1
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 4
+    GT           : ['GO', 'READ', 'OUR', 'COME']
+    Prediction   : ['GO', 'READ', 'OUR', 'COME']
+    WER          : 0.0000
+    Emit regions : [(61, 134, np.str_('GO')), (169, 303, np.str_('READ')), (329, 424, np.str_('OUR')), (474, 591, np.str_('COME'))]
+    GT segments  : [{'label': 'GO', 'start_frame': 54, 'end_frame': 125}, {'label': 'READ', 'start_frame': 167, 'end_frame': 292}, {'label': 'OUR', 'start_frame': 336, 'end_frame': 419}, {'label': 'COME', 'start_frame': 488, 'end_frame': 580}]
+  [4] user1 | P1_S2_R9
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 4
+    GT           : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    Prediction   : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    WER          : 0.0000
+    Emit regions : [(42, 132, np.str_('FARMING')), (205, 264, np.str_('BIG')), (328, 390, np.str_('VAN')), (467, 596, np.str_('SMALL'))]
+    GT segments  : [{'label': 'FARMING', 'start_frame': 39, 'end_frame': 121}, {'label': 'BIG', 'start_frame': 203, 'end_frame': 254}, {'label': 'VAN', 'start_frame': 324, 'end_frame': 381}, {'label': 'SMALL', 'start_frame': 517, 'end_frame': 591}]
+  [5] user1 | P1_S3_R2
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 750 | Emitted: 4
+    GT           : ['WRITE', 'FEBRUARY', 'UGLY', 'AUGUST']
+    Prediction   : ['WRITE', 'FEBRUARY', 'UGLY', 'AUGUST']
+    WER          : 0.0000
+    Emit regions : [(24, 106, np.str_('WRITE')), (149, 281, np.str_('FEBRUARY')), (323, 461, np.str_('UGLY')), (509, 639, np.str_('AUGUST'))]
+    GT segments  : [{'label': 'WRITE', 'start_frame': 22, 'end_frame': 101}, {'label': 'FEBRUARY', 'start_frame': 145, 'end_frame': 271}, {'label': 'UGLY', 'start_frame': 340, 'end_frame': 444}, {'label': 'AUGUST', 'start_frame': 504, 'end_frame': 628}]
+
+============================================================
+STREAMING METRICS EVALUATION — Test (user3)
+============================================================
+Sequences: 55 | Classes: 21
+Running: original+corrected
+
+
+────────────────────────────────────────────────────────────
+ORIGINAL METRICS (Duo Streamers baseline) — Test (user3)
+────────────────────────────────────────────────────────────
+==================================================
+GLOBAL RESULTS (Original / Duo Streamers version)
+==================================================
+Class AUGUST:
+  Detection Rate : 0.3333
+  FP Rate (buggy): 0.0000
+  Avg Latency    : 29.20 frames
+  Avg Jaccard    : 0.6515
+Class BIG:
+  Detection Rate : 0.3056
+  FP Rate (buggy): 0.1000
+  Avg Latency    : 3.64 frames
+  Avg Jaccard    : 0.7313
+Class BIRD:
+  Detection Rate : 0.2000
+  FP Rate (buggy): 0.0323
+  Avg Latency    : 19.67 frames
+  Avg Jaccard    : 0.4144
+Class BOAT:
+  Detection Rate : 0.2333
+  FP Rate (buggy): 0.1176
+  Avg Latency    : 6.86 frames
+  Avg Jaccard    : 0.6428
+Class COME:
+  Detection Rate : 0.2667
+  FP Rate (buggy): 0.0909
+  Avg Latency    : 16.50 frames
+  Avg Jaccard    : 0.6072
+Class DRIVER:
+  Detection Rate : 0.3333
+  FP Rate (buggy): 0.0909
+  Avg Latency    : 6.30 frames
+  Avg Jaccard    : 0.8679
+Class FARMING:
+  Detection Rate : 0.3056
+  FP Rate (buggy): 0.0270
+  Avg Latency    : 20.18 frames
+  Avg Jaccard    : 0.5858
+Class FEBRUARY:
+  Detection Rate : 0.3333
+  FP Rate (buggy): 0.4444
+  Avg Latency    : 8.10 frames
+  Avg Jaccard    : 0.7946
+Class GO:
+  Detection Rate : 0.2667
+  FP Rate (buggy): 0.0625
+  Avg Latency    : 4.38 frames
+  Avg Jaccard    : 0.5933
+Class GREETINGS:
+  Detection Rate : 0.2121
+  FP Rate (buggy): 0.1538
+  Avg Latency    : 12.57 frames
+  Avg Jaccard    : 0.5893
+Class OUR:
+  Detection Rate : 0.1250
+  FP Rate (buggy): 0.0769
+  Avg Latency    : 23.00 frames
+  Avg Jaccard    : 0.1545
+Class READ:
+  Detection Rate : 0.3333
+  FP Rate (buggy): 0.0909
+  Avg Latency    : 17.40 frames
+  Avg Jaccard    : 0.7419
+Class SMALL:
+  Detection Rate : 0.3333
+  FP Rate (buggy): 0.1316
+  Avg Latency    : 14.73 frames
+  Avg Jaccard    : 0.7602
+Class TIGER:
+  Detection Rate : 0.2667
+  FP Rate (buggy): 0.0625
+  Avg Latency    : 9.38 frames
+  Avg Jaccard    : 0.5318
+Class TRAIN:
+  Detection Rate : 0.3333
+  FP Rate (buggy): 0.1429
+  Avg Latency    : 5.38 frames
+  Avg Jaccard    : 0.7937
+Class UGLY:
+  Detection Rate : 0.0667
+  FP Rate (buggy): 0.0323
+  Avg Latency    : 6.00 frames
+  Avg Jaccard    : 0.1431
+Class VAN:
+  Detection Rate : 0.3333
+  FP Rate (buggy): 0.2826
+  Avg Latency    : 11.27 frames
+  Avg Jaccard    : 0.6365
+Class WHAT:
+  Detection Rate : 0.2000
+  FP Rate (buggy): 0.0323
+  Avg Latency    : 10.33 frames
+  Avg Jaccard    : 0.3342
+Class WHICH:
+  Detection Rate : 0.3333
+  FP Rate (buggy): 0.0357
+  Avg Latency    : 5.22 frames
+  Avg Jaccard    : 0.7899
+Class WRITE:
+  Detection Rate : 0.3333
+  FP Rate (buggy): 0.0000
+  Avg Latency    : 25.10 frames
+  Avg Jaccard    : 0.6426
+
+--- Macro averages ---
+  Overall Detection Rate : 0.2739
+  Overall FPR (buggy)    : 0.1166
+  Overall Jaccard Index  : 0.6003  
+==================================================
+
+────────────────────────────────────────────────────────────
+CORRECTED METRICS (SHREC'21 protocol) — Test (user3)
+────────────────────────────────────────────────────────────
+============================================================
+GLOBAL RESULTS  (Corrected — SHREC'21 protocol)
+============================================================
+Class AUGUST:
+  Detection Rate : 0.9000  (9/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.1000  (1 FP / 10 GT)
+  Avg Latency    : 29.00 frames
+  Avg Jaccard    : 0.5649
+Class BIG:
+  Detection Rate : 0.9167  (11/12)
+  Misclass Rate  : 0.0833  (1/12)
+  False Pos Rate : 0.7500  (9 FP / 12 GT)
+  Avg Latency    : 7.36 frames
+  Avg Jaccard    : 0.3750
+Class BIRD:
+  Detection Rate : 0.7000  (7/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.1000  (1 FP / 10 GT)
+  Avg Latency    : 20.14 frames
+  Avg Jaccard    : 0.4251
+Class BOAT:
+  Detection Rate : 0.7000  (7/10)
+  Misclass Rate  : 0.3000  (3/10)
+  False Pos Rate : 0.4000  (4 FP / 10 GT)
+  Avg Latency    : 6.86 frames
+  Avg Jaccard    : 0.3420
+Class COME:
+  Detection Rate : 0.8000  (8/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.2000  (2 FP / 10 GT)
+  Avg Latency    : 16.50 frames
+  Avg Jaccard    : 0.4657
+Class DRIVER:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.4000  (4 FP / 10 GT)
+  Avg Latency    : 6.30 frames
+  Avg Jaccard    : 0.6176
+Class FARMING:
+  Detection Rate : 0.9167  (11/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0833  (1 FP / 12 GT)
+  Avg Latency    : 20.18 frames
+  Avg Jaccard    : 0.5470
+Class FEBRUARY:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 2.3000  (23 FP / 10 GT)
+  Avg Latency    : 8.10 frames
+  Avg Jaccard    : 0.2410
+Class GO:
+  Detection Rate : 0.9000  (9/10)
+  Misclass Rate  : 0.1000  (1/10)
+  False Pos Rate : 0.5000  (5 FP / 10 GT)
+  Avg Latency    : 6.33 frames
+  Avg Jaccard    : 0.3701
+Class GREETINGS:
+  Detection Rate : 0.5455  (6/11)
+  Misclass Rate  : 0.0909  (1/11)
+  False Pos Rate : 0.9091  (10 FP / 11 GT)
+  Avg Latency    : 11.67 frames
+  Avg Jaccard    : 0.2500
+Class OUR:
+  Detection Rate : 0.2500  (2/8)
+  Misclass Rate  : 0.2500  (2/8)
+  False Pos Rate : 0.2500  (2 FP / 8 GT)
+  Avg Latency    : 15.50 frames
+  Avg Jaccard    : 0.1305
+Class READ:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 17.40 frames
+  Avg Jaccard    : 0.7958
+Class SMALL:
+  Detection Rate : 0.9091  (10/11)
+  Misclass Rate  : 0.0000  (0/11)
+  False Pos Rate : 0.5455  (6 FP / 11 GT)
+  Avg Latency    : 11.60 frames
+  Avg Jaccard    : 0.4625
+Class TIGER:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 11.90 frames
+  Avg Jaccard    : 0.6112
+Class TRAIN:
+  Detection Rate : 1.0000  (8/8)
+  Misclass Rate  : 0.0000  (0/8)
+  False Pos Rate : 0.2500  (2 FP / 8 GT)
+  Avg Latency    : 5.38 frames
+  Avg Jaccard    : 0.6269
+Class UGLY:
+  Detection Rate : 0.2000  (2/10)
+  Misclass Rate  : 0.8000  (8/10)
+  False Pos Rate : 0.1000  (1 FP / 10 GT)
+  Avg Latency    : 6.00 frames
+  Avg Jaccard    : 0.0722
+Class VAN:
+  Detection Rate : 1.0000  (11/11)
+  Misclass Rate  : 0.0000  (0/11)
+  False Pos Rate : 1.3636  (15 FP / 11 GT)
+  Avg Latency    : 15.36 frames
+  Avg Jaccard    : 0.2708
+Class WHAT:
+  Detection Rate : 0.6000  (6/10)
+  Misclass Rate  : 0.1000  (1/10)
+  False Pos Rate : 0.1000  (1 FP / 10 GT)
+  Avg Latency    : 11.33 frames
+  Avg Jaccard    : 0.2968
+Class WHICH:
+  Detection Rate : 1.0000  (9/9)
+  Misclass Rate  : 0.0000  (0/9)
+  False Pos Rate : 0.5556  (5 FP / 9 GT)
+  Avg Latency    : 5.22 frames
+  Avg Jaccard    : 0.4989
+Class WRITE:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 25.10 frames
+  Avg Jaccard    : 0.8041
+
+--- Macro averages (across all classes) ---
+  Detection Rate : 0.8218
+  Misclass Rate  : 0.0842
+  False Pos Rate : 0.4554
+  Jaccard Index  : 0.4384
+============================================================
+Saved model checkpoint: trained_models\20260627T123739Z_lstm_fullseq_val-0.8758_7c695f31.pt
+Training curves saved to: trained_models\plots\curves_test_user3.png
+
+======================================================================
+FINAL SUMMARY ACROSS ALL FOLDS
+======================================================================
+test_user           dev_users  best_val_acc  best_val_f1  test_mean_wer                                                          saved_path
+    user3 user1, user2, user5      0.875792     0.839152       0.506061 trained_models\20260627T123739Z_lstm_fullseq_val-0.8758_7c695f31.pt

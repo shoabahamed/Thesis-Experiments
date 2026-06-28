@@ -58,6 +58,58 @@ def compute_class_weights(
     return torch.tensor(class_weights, dtype=torch.float32, device=DEVICE)
 
 
+class FocalLoss(nn.Module):
+    """Focal Loss for multi-class classification.
+
+    FL(p_t) = -alpha_t * (1 - p_t)^gamma * log(p_t)
+
+    Supports per-class weights (alpha) and ignore_index for padding.
+    """
+
+    def __init__(
+        self,
+        weight: torch.Tensor | None = None,
+        gamma: float = 2.0,
+        ignore_index: int = -1,
+        reduction: str = "mean",
+    ):
+        super().__init__()
+        self.gamma = gamma
+        self.ignore_index = ignore_index
+        self.reduction = reduction
+        if weight is not None:
+            self.register_buffer("weight", weight)
+        else:
+            self.weight = None
+
+    def forward(self, input: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
+        mask = target != self.ignore_index
+        if not mask.any():
+            return torch.tensor(0.0, device=input.device, requires_grad=True)
+
+        input_m = input[mask]
+        target_m = target[mask]
+
+        log_p = torch.nn.functional.log_softmax(input_m, dim=-1)
+        p = torch.exp(log_p)
+
+        log_p_true = log_p.gather(1, target_m.unsqueeze(1)).squeeze(1)
+        p_true = p.gather(1, target_m.unsqueeze(1)).squeeze(1)
+
+        focal_weight = (1.0 - p_true) ** self.gamma
+        loss = -focal_weight * log_p_true
+
+        if self.weight is not None:
+            alpha = self.weight[target_m]
+            loss = loss * alpha
+
+        if self.reduction == "mean":
+            return loss.mean()
+        elif self.reduction == "sum":
+            return loss.sum()
+        return loss
+
+
 # ──────────────────────────────────────────────────────────────────────
 # WER helpers
 # ──────────────────────────────────────────────────────────────────────
@@ -161,32 +213,51 @@ def save_unique_model(
 # ──────────────────────────────────────────────────────────────────────
 
 def plot_training_curves(train_result: dict, save_path: str | None = None) -> None:
-    """Plot training loss and accuracy curves."""
+    """Plot training loss, accuracy, and macro-F1 curves."""
     history_train_loss = train_result["history_train_loss"]
     history_train_batch_acc = train_result["history_train_batch_acc"]
     history_val_acc = train_result["history_val_acc"]
+    history_train_f1 = train_result.get("history_train_f1", [])
+    history_val_f1 = train_result.get("history_val_f1", [])
 
     epochs_axis = np.arange(1, len(history_train_loss) + 1)
 
-    plt.figure(figsize=(12, 4))
+    plt.figure(figsize=(18, 4))
 
-    plt.subplot(1, 2, 1)
+    # ── Loss ──
+    plt.subplot(1, 3, 1)
     plt.plot(epochs_axis, history_train_loss, marker="o")
     plt.title("Training Loss")
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
     plt.grid(True, alpha=0.3)
 
-    plt.subplot(1, 2, 2)
+    # ── Accuracy ──
+    plt.subplot(1, 3, 2)
     if len(history_train_batch_acc) == len(epochs_axis):
         plt.plot(
             epochs_axis, history_train_batch_acc,
-            marker="x", linestyle="--", label="Train (batch-sampled)",
+            marker="x", linestyle="--", label="Train (batch)",
         )
     plt.plot(epochs_axis, history_val_acc, marker="o", label="Validation")
     plt.title("Accuracy")
     plt.xlabel("Epoch")
     plt.ylabel("Accuracy")
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+
+    # ── Macro F1 ──
+    plt.subplot(1, 3, 3)
+    if len(history_train_f1) == len(epochs_axis):
+        plt.plot(
+            epochs_axis, history_train_f1,
+            marker="x", linestyle="--", label="Train (batch)",
+        )
+    if len(history_val_f1) == len(epochs_axis):
+        plt.plot(epochs_axis, history_val_f1, marker="o", label="Validation")
+    plt.title("Macro F1")
+    plt.xlabel("Epoch")
+    plt.ylabel("F1")
     plt.legend()
     plt.grid(True, alpha=0.3)
 

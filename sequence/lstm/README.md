@@ -1,0 +1,1 @@
+the base model which works using lstm. But the accuracy and other metrics low need higher more powerfull model

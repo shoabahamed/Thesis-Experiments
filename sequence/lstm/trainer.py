@@ -2,7 +2,7 @@
 Training loop and per-epoch evaluation for the LSTM model.
 
 Provides:
-  - evaluate_lstm     : compute loss + accuracy on a DataLoader
+  - evaluate_lstm     : compute loss + accuracy + macro-F1 on a DataLoader
   - train_lstm_model  : full training loop with early stopping, scheduling
 """
 from __future__ import annotations
@@ -10,6 +10,7 @@ from __future__ import annotations
 import pandas as pd
 import torch
 import torch.nn as nn
+from sklearn.metrics import f1_score
 from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
 
@@ -27,12 +28,14 @@ def evaluate_lstm(
     loader: DataLoader,
     criterion: nn.Module,
     num_classes: int,
-) -> tuple[float, float]:
-    """Evaluate model on a DataLoader. Returns (accuracy, avg_loss)."""
+) -> tuple[float, float, float]:
+    """Evaluate model on a DataLoader. Returns (accuracy, avg_loss, macro_f1)."""
     model_obj.eval()
     total_loss = 0.0
     total_correct = 0
     total_frames = 0
+    all_preds: list[int] = []
+    all_targets: list[int] = []
 
     with torch.no_grad():
         for sequences, labels, lengths in loader:
@@ -51,13 +54,16 @@ def evaluate_lstm(
                 preds = torch.argmax(flat_logits, dim=1)
                 total_correct += (preds[mask] == flat_labels[mask]).sum().item()
                 total_frames += mask.sum().item()
+                all_preds.extend(preds[mask].cpu().tolist())
+                all_targets.extend(flat_labels[mask].cpu().tolist())
 
     if total_frames == 0:
-        return 0.0, 0.0
+        return 0.0, 0.0, 0.0
 
     acc = total_correct / total_frames
     avg_loss = total_loss / max(1, len(loader))
-    return float(acc), float(avg_loss)
+    macro_f1 = f1_score(all_targets, all_preds, average="macro", zero_division=0)
+    return float(acc), float(avg_loss), float(macro_f1)
 
 
 def train_lstm_model(
@@ -79,6 +85,9 @@ def train_lstm_model(
 ) -> dict:
     """Full training loop with early stopping and LR scheduling.
 
+    Best model is selected by **validation macro-F1** (more robust than
+    accuracy when background frames dominate the dataset).
+
     Returns
     -------
     dict with training results including best_model_state, history, etc.
@@ -94,7 +103,8 @@ def train_lstm_model(
             patience=scheduler_patience,
         )
 
-    best_val_acc = -1.0
+    best_val_f1 = -1.0
+    best_val_acc_at_best_f1 = -1.0
     best_model_state = None
     epochs_without_improvement = 0
 
@@ -102,6 +112,8 @@ def train_lstm_model(
     history_train_acc = []
     history_train_batch_acc = []
     history_val_acc = []
+    history_train_f1 = []
+    history_val_f1 = []
     epoch_history = []
 
     print(f"[{model_name}] using normalization: {normalization_name}")
@@ -109,12 +121,15 @@ def train_lstm_model(
         f"Stabilization: grad_clip={use_grad_clip} (norm={grad_clip_norm}), "
         f"scheduler={use_scheduler}, early_stopping_patience={early_stopping_patience}"
     )
+    print(f"Model selection criterion: validation macro-F1")
 
     for epoch in range(1, epochs + 1):
         model_obj.train()
         running_loss = 0.0
         running_correct = 0
         running_total = 0
+        epoch_preds: list[int] = []
+        epoch_targets: list[int] = []
 
         for sequences, labels, lengths in tqdm(
             train_loader,
@@ -147,6 +162,8 @@ def train_lstm_model(
                     (batch_preds[mask] == flat_labels[mask]).sum().item()
                 )
                 running_total += mask.sum().item()
+                epoch_preds.extend(batch_preds[mask].detach().cpu().tolist())
+                epoch_targets.extend(flat_labels[mask].detach().cpu().tolist())
 
         epoch_loss = running_loss / max(1, len(train_loader))
         history_train_loss.append(epoch_loss)
@@ -155,22 +172,32 @@ def train_lstm_model(
         history_train_batch_acc.append(epoch_train_batch_acc)
         history_train_acc.append(float("nan"))
 
-        val_acc, _ = evaluate_lstm(
+        epoch_train_f1 = f1_score(
+            epoch_targets, epoch_preds, average="macro", zero_division=0,
+        ) if epoch_targets else 0.0
+        history_train_f1.append(float(epoch_train_f1))
+
+        val_acc, _, val_f1 = evaluate_lstm(
             model_obj, val_loader, criterion, num_classes,
         )
         history_val_acc.append(val_acc)
+        history_val_f1.append(val_f1)
 
+        # LR scheduler tracks val macro-F1
         if scheduler is not None:
-            scheduler.step(val_acc)
+            scheduler.step(val_f1)
 
-        if val_acc > best_val_acc:
-            best_val_acc = val_acc
+        # Best model selection by val macro-F1
+        if val_f1 > best_val_f1:
+            best_val_f1 = val_f1
+            best_val_acc_at_best_f1 = val_acc
             best_model_state = {
                 k: v.detach().clone() for k, v in model_obj.state_dict().items()
             }
             epochs_without_improvement = 0
             print(
-                f"  -> [{model_name}] new best in memory (val_acc={val_acc:.4f})"
+                f"  -> [{model_name}] new best in memory "
+                f"(val_f1={val_f1:.4f}, val_acc={val_acc:.4f})"
             )
         else:
             epochs_without_improvement += 1
@@ -181,12 +208,18 @@ def train_lstm_model(
             "epoch": epoch,
             "train_loss": float(epoch_loss),
             "train_batch_acc": float(epoch_train_batch_acc),
+            "train_f1": float(epoch_train_f1),
             "val_acc": float(val_acc),
+            "val_f1": float(val_f1),
         })
 
         print(
-            f"{model_name} | Epoch {epoch:02d} | Train Loss: {epoch_loss:.4f} | "
-            f"Train Batch Acc: {epoch_train_batch_acc:.4f} | Val Acc: {val_acc:.4f}"
+            f"{model_name} | Epoch {epoch:02d} | "
+            f"Loss: {epoch_loss:.4f} | "
+            f"Train Acc: {epoch_train_batch_acc:.4f} | "
+            f"Train F1: {epoch_train_f1:.4f} | "
+            f"Val Acc: {val_acc:.4f} | "
+            f"Val F1: {val_f1:.4f}"
         )
 
         if (
@@ -210,11 +243,14 @@ def train_lstm_model(
     return {
         "model_name": model_name,
         "normalization": normalization_name,
-        "best_val_acc": float(best_val_acc),
+        "best_val_acc": float(best_val_acc_at_best_f1),
+        "best_val_f1": float(best_val_f1),
         "best_model_state": best_model_state,
         "history_train_loss": history_train_loss,
         "history_train_acc": history_train_acc,
         "history_train_batch_acc": history_train_batch_acc,
         "history_val_acc": history_val_acc,
+        "history_train_f1": history_train_f1,
+        "history_val_f1": history_val_f1,
         "epoch_history": epoch_history,
     }
