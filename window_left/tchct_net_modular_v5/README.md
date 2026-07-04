@@ -1,0 +1,1 @@
+add wrist as a point in the model and see how it performs 

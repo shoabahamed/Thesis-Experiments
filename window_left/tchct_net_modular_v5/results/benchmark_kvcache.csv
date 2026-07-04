@@ -1,0 +1,37 @@
+device,device_name,latency_mean_ms,latency_std_ms,latency_min_ms,latency_max_ms,throughput_fps,T,mode,peak_gpu_mb,ram_delta_mb
+cpu,CPU,35.962,10.948,22.044,63.876,139.0,5,kvcache_batch,0.0,0.0
+cpu,CPU,94.599,40.043,57.758,226.038,528.5,50,kvcache_batch,0.0,0.0
+cpu,CPU,104.004,14.427,87.227,153.633,961.5,100,kvcache_batch,0.0,0.0
+cpu,CPU,202.875,42.713,168.837,355.909,985.8,200,kvcache_batch,0.0,0.0
+cpu,CPU,280.935,24.613,227.953,323.888,1067.9,300,kvcache_batch,0.0,0.03
+cpu,CPU,388.607,50.834,322.924,505.634,1029.3,400,kvcache_batch,0.0,0.0
+cpu,CPU,509.449,82.781,421.065,741.951,981.5,500,kvcache_batch,0.0,0.0
+cpu,CPU,601.951,60.694,499.304,747.295,996.8,600,kvcache_batch,0.0,0.0
+cpu,CPU,867.165,168.407,684.982,1302.622,864.9,750,kvcache_batch,0.0,0.0
+cpu,CPU,9.398,1.879,7.194,14.569,106.4,5,kvcache_streaming,0.0,0.0
+cpu,CPU,11.533,3.843,6.717,22.33,86.7,50,kvcache_streaming,0.0,0.0
+cpu,CPU,8.993,1.442,7.296,12.661,111.2,100,kvcache_streaming,0.0,0.09
+cpu,CPU,9.227,2.129,7.02,14.895,108.4,200,kvcache_streaming,0.0,0.0
+cpu,CPU,20.702,13.573,8.395,69.958,48.3,300,kvcache_streaming,0.0,0.0
+cpu,CPU,20.297,15.428,9.924,82.349,49.3,400,kvcache_streaming,0.0,0.0
+cpu,CPU,11.242,2.161,8.84,15.367,89.0,500,kvcache_streaming,0.0,0.0
+cpu,CPU,17.44,18.705,9.231,97.613,57.3,600,kvcache_streaming,0.0,0.0
+cpu,CPU,10.855,1.057,9.158,13.023,92.1,750,kvcache_streaming,0.0,2.84
+cuda,NVIDIA GeForce RTX 2050,27.177,0.961,25.226,28.788,184.0,5,kvcache_batch,15.21,0.54
+cuda,NVIDIA GeForce RTX 2050,30.015,3.932,25.18,44.445,1665.8,50,kvcache_batch,23.71,0.11
+cuda,NVIDIA GeForce RTX 2050,36.242,7.929,28.22,56.082,2759.3,100,kvcache_batch,33.16,0.0
+cuda,NVIDIA GeForce RTX 2050,29.955,1.625,25.647,32.089,6676.6,200,kvcache_batch,52.06,0.58
+cuda,NVIDIA GeForce RTX 2050,28.442,1.64,26.103,32.489,10547.9,300,kvcache_batch,71.59,0.0
+cuda,NVIDIA GeForce RTX 2050,29.701,1.629,26.458,33.706,13467.6,400,kvcache_batch,89.86,0.12
+cuda,NVIDIA GeForce RTX 2050,28.0,2.053,25.179,32.381,17857.2,500,kvcache_batch,109.52,0.0
+cuda,NVIDIA GeForce RTX 2050,29.215,3.229,26.118,38.212,20537.3,600,kvcache_batch,128.29,0.0
+cuda,NVIDIA GeForce RTX 2050,34.745,0.194,34.386,35.155,21585.8,750,kvcache_batch,158.36,0.0
+cuda,NVIDIA GeForce RTX 2050,14.956,0.61,13.745,16.204,66.9,5,kvcache_streaming,14.04,0.01
+cuda,NVIDIA GeForce RTX 2050,16.672,1.977,13.663,22.13,60.0,50,kvcache_streaming,14.26,0.0
+cuda,NVIDIA GeForce RTX 2050,18.321,4.426,14.131,35.205,54.6,100,kvcache_streaming,14.51,0.0
+cuda,NVIDIA GeForce RTX 2050,15.061,0.882,13.144,16.835,66.4,200,kvcache_streaming,15.01,0.0
+cuda,NVIDIA GeForce RTX 2050,16.942,1.494,14.43,21.589,59.0,300,kvcache_streaming,15.5,0.0
+cuda,NVIDIA GeForce RTX 2050,15.93,2.504,13.781,25.761,62.8,400,kvcache_streaming,16.0,0.0
+cuda,NVIDIA GeForce RTX 2050,15.368,3.199,10.162,25.043,65.1,500,kvcache_streaming,16.49,0.0
+cuda,NVIDIA GeForce RTX 2050,13.53,0.652,12.67,15.341,73.9,600,kvcache_streaming,16.98,0.0
+cuda,NVIDIA GeForce RTX 2050,17.33,2.667,14.276,24.184,57.7,750,kvcache_streaming,17.73,0.0

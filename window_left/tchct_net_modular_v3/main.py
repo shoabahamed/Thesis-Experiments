@@ -300,7 +300,7 @@ def run_single_fold(
             model.load_state_dict(train_result["best_model_state"])
 
     # ── 6. Window-level evaluation ──
-    confusion_dir = os.path.join(save_dir, "plots", "confusion_matrices")
+    confusion_dir = os.path.join(save_dir, "plots", "confusion_matrices", test_user)
     frame_summary = print_frame_level_report(
         model_obj=model,
         loaders={"Train": train_loader, "Val": val_loader, "Test": test_loader},
