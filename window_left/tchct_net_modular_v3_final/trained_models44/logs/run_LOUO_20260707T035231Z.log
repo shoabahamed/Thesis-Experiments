@@ -1,0 +1,2004 @@
+[ignoring loop detection]
+==================================================
+COMMENT: running on all folds with final version
+==================================================
+RUN START TIME (UTC): 20260707T035231Z
+Log filepath        : trained_models/logs/run_LOUO_20260707T035231Z.log
+==================================================
+COMMAND LINE ARGUMENTS:
+  --louo      : True
+  --test_mode : False
+  --test_user : user3
+  --seed      : 44
+  --epochs    : 10
+  --lr        : 0.0003
+  --save_dir  : trained_models
+  --dataset_root: /kaggle/input/datasets/shoabahamed/sign-language-thesis/dataset/dataset
+  --glosses_per_batch: 12
+  --samples_per_gloss: 12
+  --comment   : running on all folds with final version
+  --from_checkpoint: False
+  --focal_loss: False
+  --focal_gamma: 2.0
+  --exclude_train_seq: 
+  --augment   : True
+  --rotation_prob: 0.5
+  --rotation_range: 8.0
+  --scaling_prob: 0.5
+  --scaling_min: 0.95
+  --scaling_max: 1.05
+  --noise_prob: 0.5
+  --noise_std : 2.0
+  --dropout_prob: 0.35
+  --dropout_rate: 0.15
+  --user1_epochs: None
+  --user1_lr  : None
+  --user1_glosses_per_batch: None
+  --user1_samples_per_gloss: None
+  --user1_focal_loss: None
+  --user1_focal_gamma: None
+  --user1_exclude_train_seq: None
+  --user1_augment: None
+  --user1_rotation_prob: None
+  --user1_rotation_range: None
+  --user1_scaling_prob: None
+  --user1_scaling_min: None
+  --user1_scaling_max: None
+  --user1_noise_prob: None
+  --user1_noise_std: None
+  --user1_dropout_prob: None
+  --user1_dropout_rate: None
+  --user2_epochs: None
+  --user2_lr  : None
+  --user2_glosses_per_batch: None
+  --user2_samples_per_gloss: None
+  --user2_focal_loss: None
+  --user2_focal_gamma: None
+  --user2_exclude_train_seq: None
+  --user2_augment: None
+  --user2_rotation_prob: None
+  --user2_rotation_range: None
+  --user2_scaling_prob: None
+  --user2_scaling_min: None
+  --user2_scaling_max: None
+  --user2_noise_prob: None
+  --user2_noise_std: None
+  --user2_dropout_prob: None
+  --user2_dropout_rate: None
+  --user3_epochs: None
+  --user3_lr  : None
+  --user3_glosses_per_batch: None
+  --user3_samples_per_gloss: None
+  --user3_focal_loss: None
+  --user3_focal_gamma: None
+  --user3_exclude_train_seq: None
+  --user3_augment: None
+  --user3_rotation_prob: None
+  --user3_rotation_range: None
+  --user3_scaling_prob: None
+  --user3_scaling_min: None
+  --user3_scaling_max: None
+  --user3_noise_prob: None
+  --user3_noise_std: None
+  --user3_dropout_prob: None
+  --user3_dropout_rate: None
+  --user5_epochs: None
+  --user5_lr  : None
+  --user5_glosses_per_batch: None
+  --user5_samples_per_gloss: None
+  --user5_focal_loss: None
+  --user5_focal_gamma: None
+  --user5_exclude_train_seq: None
+  --user5_augment: None
+  --user5_rotation_prob: None
+  --user5_rotation_range: None
+  --user5_scaling_prob: None
+  --user5_scaling_min: None
+  --user5_scaling_max: None
+  --user5_noise_prob: None
+  --user5_noise_std: None
+  --user5_dropout_prob: None
+  --user5_dropout_rate: None
+==================================================
+CENTRAL HYPERPARAMETERS:
+  Device            : cuda
+  Dataset root      : /kaggle/input/datasets/shoabahamed/sign-language-thesis/dataset/dataset
+  Glosses/batch     : 12
+  Samples/gloss     : 12
+  Seed              : 44
+  Dev-Val Ratio     : 0.12
+  Batch size        : 4
+  Test mode         : False
+  Model name        : thct_net
+  Normalization     : palm_ref
+  Learning rate     : 0.0003
+  Epochs            : 10
+  From checkpoint   : False
+  D_MODEL           : 128
+  NUM_HEADS         : 4
+  NUM_TRANS_LAYERS  : 4
+  BASE_CH           : 64
+  Dropout           : 0.1
+  Decoder bag size  : 5
+  Decoder threshold : 0.35
+  Loss function     : CrossEntropyLoss
+  Augmentation      : True
+    Rotation prob   : 0.5 (range: ±8.0 deg)
+    Scaling prob    : 0.5 (range: [0.95, 1.05])
+    Noise prob      : 0.5 (std: 2.0 mm)
+    Dropout prob    : 0.35 (rate: 0.15)
+  Per-user overrides: see RESOLVED PER-USER FOLD CONFIGURATIONS below
+==================================================
+
+Using device: cuda
+Dataset root: /kaggle/input/datasets/shoabahamed/sign-language-thesis/dataset/dataset
+Matched recordings per user:
+  user1: 76 recordings
+  user2: 73 recordings
+  user3: 55 recordings
+  user5: 72 recordings
+
+
+
+Total raw segments (sign + background): 2293
+Available users: ['user1', 'user2', 'user3', 'user5']
+
+######################################################################
+LEAVE-ONE-OUT USER CROSS-VALIDATION
+Users to evaluate: ['user1', 'user2', 'user3', 'user5']
+######################################################################
+
+======================================================================
+RESOLVED PER-USER FOLD CONFIGURATIONS
+======================================================================
+
+  [user1]
+    epochs=10, lr=0.0003, augment=True
+    aug: rot_p=0.5, rot_r=±8.0, scale_p=0.5, scale=[0.95,1.05], noise_p=0.5, noise_std=2.0, drop_p=0.35, drop_r=0.15
+
+  [user2]
+    epochs=10, lr=0.0003, augment=True
+    aug: rot_p=0.5, rot_r=±8.0, scale_p=0.5, scale=[0.95,1.05], noise_p=0.5, noise_std=2.0, drop_p=0.35, drop_r=0.15
+
+  [user3]
+    epochs=10, lr=0.0003, augment=True
+    aug: rot_p=0.5, rot_r=±8.0, scale_p=0.5, scale=[0.95,1.05], noise_p=0.5, noise_std=2.0, drop_p=0.35, drop_r=0.15
+
+  [user5]
+    epochs=10, lr=0.0003, augment=True
+    aug: rot_p=0.5, rot_r=±8.0, scale_p=0.5, scale=[0.95,1.05], noise_p=0.5, noise_std=2.0, drop_p=0.35, drop_r=0.15
+======================================================================
+
+
+──────────────────────────────────────────────────────────────────────
+FOLD CONFIG: test_user=user1
+──────────────────────────────────────────────────────────────────────
+  Epochs            : 10
+  Learning rate     : 0.0003
+  Glosses/batch     : 12
+  Samples/gloss     : 12
+  Loss function     : CrossEntropyLoss
+  Augmentation      : True
+    Rotation prob   : 0.5 (range: ±8.0 deg)
+    Scaling prob    : 0.5 (range: [0.95, 1.05])
+    Noise prob      : 0.5 (std: 2.0 mm)
+    Dropout prob    : 0.35 (rate: 0.15)
+──────────────────────────────────────────────────────────────────────
+
+======================================================================
+FOLD: test_user=user1, dev_users=['user2', 'user3', 'user5']
+======================================================================
+Fold seed: 540 (base 44 + user offset)
+
+============================================================
+SPLIT: test_user=user1, dev_users=['user2', 'user3', 'user5']
+============================================================
+Dev removed by filter   : {'too_short': 5}
+Test removed by filter  : {'missing_data': 1, 'low_confidence': 1}
+Train segments (filtered): 1384
+Val segments (filtered)  : 270
+Test segments (filtered) : 633
+Label mapping (string -> ID):
+  np.str_('AUGUST') -> 0
+  np.str_('BIG') -> 1
+  np.str_('BIRD') -> 2
+  np.str_('BOAT') -> 3
+  np.str_('COME') -> 4
+  np.str_('DRIVER') -> 5
+  np.str_('FARMING') -> 6
+  np.str_('FEBRUARY') -> 7
+  np.str_('GO') -> 8
+  np.str_('GREETINGS') -> 9
+  np.str_('OUR') -> 10
+  np.str_('READ') -> 11
+  np.str_('SMALL') -> 12
+  np.str_('TIGER') -> 13
+  np.str_('TRAIN') -> 14
+  np.str_('UGLY') -> 15
+  np.str_('VAN') -> 16
+  np.str_('WHAT') -> 17
+  np.str_('WHICH') -> 18
+  np.str_('WRITE') -> 19
+  np.str_('background') -> 20
+
+Total classes: 21
+Background class ID: 20
+WER catalog sizes -> train: 167, val: 33, test: 76
+Train windows: 81589 | Val windows: 16080 | Test windows: 38589
+Train batches: 567 | Val batches: 4020 | Test batches: 9648
+Loss function: CrossEntropyLoss
+Model: thct_net | Trainable params: 1,185,727
+[thct_net] using normalization: palm_ref
+Stabilization: grad_clip=True (norm=1.0), scheduler=True, early_stopping_patience=15
+Model selection criterion: validation macro-F1
+  -> [thct_net] new best in memory (val_f1=0.9617, val_acc=0.9820)
+thct_net | Epoch 01 | Loss: 0.3972 | Train Acc: 0.9224 | Train F1: 0.9225 | Val Loss: 0.0736 | Val Acc: 0.9820 | Val F1: 0.9617
+thct_net | Epoch 02 | Loss: 0.0114 | Train Acc: 0.9974 | Train F1: 0.9974 | Val Loss: 0.0884 | Val Acc: 0.9720 | Val F1: 0.9296
+  -> [thct_net] new best in memory (val_f1=0.9796, val_acc=0.9915)
+thct_net | Epoch 03 | Loss: 0.0104 | Train Acc: 0.9971 | Train F1: 0.9971 | Val Loss: 0.0401 | Val Acc: 0.9915 | Val F1: 0.9796
+thct_net | Epoch 04 | Loss: 0.0047 | Train Acc: 0.9987 | Train F1: 0.9987 | Val Loss: 0.0355 | Val Acc: 0.9919 | Val F1: 0.9772
+thct_net | Epoch 05 | Loss: 0.0040 | Train Acc: 0.9990 | Train F1: 0.9990 | Val Loss: 0.0972 | Val Acc: 0.9731 | Val F1: 0.9683
+  -> [thct_net] new best in memory (val_f1=0.9883, val_acc=0.9947)
+thct_net | Epoch 06 | Loss: 0.0060 | Train Acc: 0.9983 | Train F1: 0.9983 | Val Loss: 0.0214 | Val Acc: 0.9947 | Val F1: 0.9883
+thct_net | Epoch 07 | Loss: 0.0018 | Train Acc: 0.9996 | Train F1: 0.9996 | Val Loss: 0.0311 | Val Acc: 0.9933 | Val F1: 0.9817
+thct_net | Epoch 08 | Loss: 0.0036 | Train Acc: 0.9988 | Train F1: 0.9988 | Val Loss: 0.0246 | Val Acc: 0.9950 | Val F1: 0.9824
+thct_net | Epoch 09 | Loss: 0.0028 | Train Acc: 0.9993 | Train F1: 0.9993 | Val Loss: 0.0164 | Val Acc: 0.9955 | Val F1: 0.9872
+thct_net | Epoch 10 | Loss: 0.0015 | Train Acc: 0.9996 | Train F1: 0.9996 | Val Loss: 0.0320 | Val Acc: 0.9930 | Val F1: 0.9823
+
+thct_net per-epoch summary:
+      model normalization  epoch  train_loss  train_batch_acc  train_f1  val_loss   val_acc    val_f1
+0  thct_net      palm_ref      1    0.397237         0.922399  0.922489  0.073620  0.981965  0.961721
+1  thct_net      palm_ref      2    0.011428         0.997379  0.997360  0.088383  0.971953  0.929637
+2  thct_net      palm_ref      3    0.010429         0.997073  0.997061  0.040097  0.991480  0.979626
+3  thct_net      palm_ref      4    0.004696         0.998702  0.998708  0.035546  0.991915  0.977198
+4  thct_net      palm_ref      5    0.003970         0.998983  0.998981  0.097152  0.973134  0.968349
+5  thct_net      palm_ref      6    0.005995         0.998310  0.998317  0.021390  0.994714  0.988287
+6  thct_net      palm_ref      7    0.001837         0.999608  0.999594  0.031051  0.993346  0.981719
+7  thct_net      palm_ref      8    0.003637         0.998824  0.998827  0.024562  0.994963  0.982443
+8  thct_net      palm_ref      9    0.002766         0.999265  0.999261  0.016403  0.995460  0.987180
+9  thct_net      palm_ref     10    0.001521         0.999584  0.999578  0.032004  0.993035  0.982324
+[thct_net] best model restored from memory.
+
+========== TRAIN WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9999
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00      3936
+         BIG       1.00      1.00      1.00      3780
+        BIRD       1.00      1.00      1.00      3780
+        BOAT       1.00      1.00      1.00      4008
+        COME       1.00      1.00      1.00      3972
+      DRIVER       1.00      1.00      1.00      3900
+     FARMING       1.00      1.00      1.00      3624
+    FEBRUARY       1.00      1.00      1.00      3840
+          GO       1.00      1.00      1.00      3876
+   GREETINGS       1.00      1.00      1.00      3900
+         OUR       1.00      1.00      1.00      3900
+        READ       1.00      1.00      1.00      3960
+       SMALL       1.00      1.00      1.00      4068
+       TIGER       1.00      1.00      1.00      4152
+       TRAIN       1.00      1.00      1.00      3732
+        UGLY       1.00      1.00      1.00      3840
+         VAN       1.00      1.00      1.00      3864
+        WHAT       1.00      1.00      1.00      4056
+       WHICH       1.00      1.00      1.00      3828
+       WRITE       1.00      1.00      1.00      3876
+  background       1.00      1.00      1.00      3756
+
+    accuracy                           1.00     81648
+   macro avg       1.00      1.00      1.00     81648
+weighted avg       1.00      1.00      1.00     81648
+
+
+========== VAL WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9947
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00       487
+         BIG       0.91      1.00      0.95       195
+        BIRD       1.00      1.00      1.00       281
+        BOAT       1.00      1.00      1.00       231
+        COME       1.00      1.00      1.00       170
+      DRIVER       1.00      1.00      1.00       649
+     FARMING       1.00      0.99      1.00       252
+    FEBRUARY       1.00      0.99      1.00       437
+          GO       0.90      1.00      0.95        94
+   GREETINGS       1.00      1.00      1.00       269
+         OUR       1.00      0.98      0.99       129
+        READ       1.00      1.00      1.00       476
+       SMALL       0.91      1.00      0.95       267
+       TIGER       0.93      1.00      0.96       193
+       TRAIN       1.00      1.00      1.00       234
+        UGLY       0.98      1.00      0.99       225
+         VAN       0.99      1.00      0.99       171
+        WHAT       1.00      1.00      1.00        40
+       WHICH       0.97      0.97      0.97       264
+       WRITE       1.00      1.00      1.00       381
+  background       1.00      0.99      1.00     10635
+
+    accuracy                           0.99     16080
+   macro avg       0.98      1.00      0.99     16080
+weighted avg       1.00      0.99      0.99     16080
+
+Confusion matrix saved to: trained_models/plots/confusion_matrices/user1/val_confusion_normalized.png
+Misclassification matrix saved to: trained_models/plots/confusion_matrices/user1/val_confusion_misclassifications.png
+
+========== TEST WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9377
+              precision    recall  f1-score   support
+
+      AUGUST       0.96      1.00      0.98       971
+         BIG       0.97      0.90      0.93       655
+        BIRD       0.93      0.91      0.92       892
+        BOAT       0.95      1.00      0.98       589
+        COME       0.97      0.44      0.60       779
+      DRIVER       1.00      0.96      0.98      1250
+     FARMING       0.98      0.85      0.91      1257
+    FEBRUARY       0.76      0.96      0.85       994
+          GO       0.94      0.70      0.80       465
+   GREETINGS       1.00      0.64      0.78       846
+         OUR       0.60      0.97      0.75       591
+        READ       1.00      0.93      0.96      1256
+       SMALL       0.75      1.00      0.86       815
+       TIGER       0.81      0.99      0.89       657
+       TRAIN       0.96      0.66      0.78       880
+        UGLY       0.82      0.95      0.88       779
+         VAN       0.88      0.97      0.92       828
+        WHAT       0.60      1.00      0.75        75
+       WHICH       0.91      0.59      0.72       884
+       WRITE       1.00      1.00      1.00       422
+  background       0.97      0.99      0.98     22704
+
+    accuracy                           0.94     38589
+   macro avg       0.89      0.88      0.87     38589
+weighted avg       0.95      0.94      0.94     38589
+
+Confusion matrix saved to: trained_models/plots/confusion_matrices/user1/test_confusion_normalized.png
+Misclassification matrix saved to: trained_models/plots/confusion_matrices/user1/test_confusion_misclassifications.png
+
+========== WINDOW ACCURACY SUMMARY ==========
+split  frame_accuracy
+Train        0.999914
+  Val        0.994714
+ Test        0.937728
+
+========== TEST (USER1) WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : thct_net_batch
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 76
+Mean WER:   0.1842
+Median WER: 0.0000
+Std WER:    0.2534
+
+Showing 5 example sequence(s):
+  [1] user1 | P1_S7_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['COME', 'DRIVER', 'BIRD']
+    Prediction   : ['COME', 'DRIVER', 'BIRD']
+    WER          : 0.0000
+    Emit regions : [(70, 126, np.str_('COME')), (206, 338, np.str_('DRIVER')), (414, 515, np.str_('BIRD'))]
+    GT segments  : [{'label': 'COME', 'start_frame': 38, 'end_frame': 115}, {'label': 'DRIVER', 'start_frame': 187, 'end_frame': 327}, {'label': 'BIRD', 'start_frame': 393, 'end_frame': 497}]
+  [2] user1 | P1_S10_R1
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(50, 132, np.str_('SMALL')), (197, 295, np.str_('FEBRUARY')), (319, 394, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 35, 'end_frame': 122}, {'label': 'FEBRUARY', 'start_frame': 178, 'end_frame': 273}, {'label': 'BOAT', 'start_frame': 309, 'end_frame': 387}]
+  [3] user1 | P1_S2_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    Prediction   : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    WER          : 0.0000
+    Emit regions : [(62, 151, np.str_('FARMING')), (216, 297, np.str_('BIG')), (383, 481, np.str_('VAN')), (539, 632, np.str_('SMALL'))]
+    GT segments  : [{'label': 'FARMING', 'start_frame': 28, 'end_frame': 138}, {'label': 'BIG', 'start_frame': 198, 'end_frame': 277}, {'label': 'VAN', 'start_frame': 369, 'end_frame': 462}, {'label': 'SMALL', 'start_frame': 527, 'end_frame': 616}]
+  [4] user1 | P1_S3_R1
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 5
+    GT           : ['WRITE', 'FEBRUARY', 'UGLY', 'AUGUST']
+    Prediction   : ['WRITE', 'FEBRUARY', 'UGLY', 'UGLY', 'AUGUST']
+    WER          : 0.2500
+    Emit regions : [(58, 134, np.str_('WRITE')), (237, 382, np.str_('FEBRUARY')), (414, 459, np.str_('UGLY')), (472, 546, np.str_('UGLY')), (613, 746, np.str_('AUGUST'))]
+    GT segments  : [{'label': 'WRITE', 'start_frame': 39, 'end_frame': 115}, {'label': 'FEBRUARY', 'start_frame': 213, 'end_frame': 357}, {'label': 'UGLY', 'start_frame': 408, 'end_frame': 531}, {'label': 'AUGUST', 'start_frame': 595, 'end_frame': 735}]
+  [5] user1 | P1_S2_R4
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    Prediction   : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    WER          : 0.0000
+    Emit regions : [(38, 141, np.str_('FARMING')), (195, 311, np.str_('BIG')), (389, 475, np.str_('VAN')), (546, 612, np.str_('SMALL'))]
+    GT segments  : [{'label': 'FARMING', 'start_frame': 19, 'end_frame': 134}, {'label': 'BIG', 'start_frame': 197, 'end_frame': 279}, {'label': 'VAN', 'start_frame': 369, 'end_frame': 458}, {'label': 'SMALL', 'start_frame': 523, 'end_frame': 610}]
+[test_user1_20260707T035231Z] metadata -> trained_models/results/test_user1_20260707t035231z_metadata.parquet
+[test_user1_20260707T035231Z] arrays   -> trained_models/results/test_user1_20260707t035231z_arrays.npz
+  sequences : 76
+  npz keys  : 608
+
+========== DEV VAL WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : thct_net_batch
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 33
+Mean WER:   0.0076
+Median WER: 0.0000
+Std WER:    0.0429
+
+Showing 5 example sequence(s):
+  [1] user2 | P2_S2_R6
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    Prediction   : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    WER          : 0.0000
+    Emit regions : [(85, 142, np.str_('FARMING')), (252, 335, np.str_('BIG')), (409, 462, np.str_('VAN')), (589, 670, np.str_('SMALL'))]
+    GT segments  : [{'label': 'FARMING', 'start_frame': 72, 'end_frame': 124}, {'label': 'BIG', 'start_frame': 238, 'end_frame': 290}, {'label': 'VAN', 'start_frame': 399, 'end_frame': 438}, {'label': 'SMALL', 'start_frame': 566, 'end_frame': 620}]
+  [2] user2 | P2_S9_R6
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['TIGER', 'WHAT', 'VAN', 'READ']
+    Prediction   : ['TIGER', 'WHAT', 'VAN', 'READ']
+    WER          : 0.0000
+    Emit regions : [(78, 118, np.str_('TIGER')), (227, 252, np.str_('WHAT')), (351, 403, np.str_('VAN')), (515, 653, np.str_('READ'))]
+    GT segments  : [{'label': 'TIGER', 'start_frame': 61, 'end_frame': 100}, {'label': 'WHAT', 'start_frame': 210, 'end_frame': 241}, {'label': 'VAN', 'start_frame': 340, 'end_frame': 378}, {'label': 'READ', 'start_frame': 499, 'end_frame': 644}]
+  [3] user2 | P2_S10_R2
+    Frames       : 600 | Missing ratio: 0.000
+    Stream steps : 571 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(57, 122, np.str_('SMALL')), (201, 339, np.str_('FEBRUARY')), (396, 463, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 39, 'end_frame': 102}, {'label': 'FEBRUARY', 'start_frame': 187, 'end_frame': 326}, {'label': 'BOAT', 'start_frame': 382, 'end_frame': 449}]
+  [4] user2 | P2_S5_R1
+    Frames       : 600 | Missing ratio: 0.000
+    Stream steps : 571 | Emitted: 4
+    GT           : ['BIRD', 'WHAT', 'DRIVER', 'GREETINGS']
+    Prediction   : ['BIRD', 'WHAT', 'DRIVER', 'GREETINGS']
+    WER          : 0.0000
+    Emit regions : [(45, 95, np.str_('BIRD')), (136, 163, np.str_('WHAT')), (215, 322, np.str_('DRIVER')), (347, 401, np.str_('GREETINGS'))]
+    GT segments  : [{'label': 'BIRD', 'start_frame': 27, 'end_frame': 86}, {'label': 'WHAT', 'start_frame': 120, 'end_frame': 144}, {'label': 'DRIVER', 'start_frame': 202, 'end_frame': 304}, {'label': 'GREETINGS', 'start_frame': 331, 'end_frame': 386}]
+  [5] user2 | P2_S1_R1
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['GO', 'READ', 'OUR', 'COME']
+    Prediction   : ['GO', 'READ', 'OUR', 'COME']
+    WER          : 0.0000
+    Emit regions : [(37, 83, np.str_('GO')), (159, 270, np.str_('READ')), (315, 364, np.str_('OUR')), (453, 509, np.str_('COME'))]
+    GT segments  : [{'label': 'GO', 'start_frame': 22, 'end_frame': 68}, {'label': 'READ', 'start_frame': 146, 'end_frame': 257}, {'label': 'OUR', 'start_frame': 292, 'end_frame': 340}, {'label': 'COME', 'start_frame': 440, 'end_frame': 493}]
+[val_user1_20260707T035231Z] metadata -> trained_models/results/val_user1_20260707t035231z_metadata.parquet
+[val_user1_20260707T035231Z] arrays   -> trained_models/results/val_user1_20260707t035231z_arrays.npz
+  sequences : 33
+  npz keys  : 264
+
+============================================================
+STREAMING METRICS EVALUATION (from WER outputs) — Test (user1)
+============================================================
+Sequences: 76 | Classes: 21
+Running: corrected
+
+
+────────────────────────────────────────────────────────────
+CORRECTED METRICS (SHREC'21 protocol) — Test (user1)
+────────────────────────────────────────────────────────────
+============================================================
+GLOBAL RESULTS  (Corrected — SHREC'21 protocol)
+============================================================
+Class AUGUST:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0769  (1 FP / 13 GT)
+  Avg Latency    : 22.31 frames
+  Avg Jaccard    : 0.6559
+Class BIG:
+  Detection Rate : 0.8125  (13/16)
+  Misclass Rate  : 0.1250  (2/16)
+  False Pos Rate : 0.0625  (1 FP / 16 GT)
+  Avg Latency    : 30.54 frames
+  Avg Jaccard    : 0.3662
+Class BIRD:
+  Detection Rate : 0.9231  (12/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0769  (1 FP / 13 GT)
+  Avg Latency    : 25.92 frames
+  Avg Jaccard    : 0.5583
+Class BOAT:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 19.46 frames
+  Avg Jaccard    : 0.6631
+Class COME:
+  Detection Rate : 0.4286  (6/14)
+  Misclass Rate  : 0.2857  (4/14)
+  False Pos Rate : 0.2857  (4 FP / 14 GT)
+  Avg Latency    : 31.67 frames
+  Avg Jaccard    : 0.1496
+Class DRIVER:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 29.62 frames
+  Avg Jaccard    : 0.7514
+Class FARMING:
+  Detection Rate : 1.0000  (16/16)
+  Misclass Rate  : 0.0000  (0/16)
+  False Pos Rate : 0.0000  (0 FP / 16 GT)
+  Avg Latency    : 28.19 frames
+  Avg Jaccard    : 0.6835
+Class FEBRUARY:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0769  (1 FP / 13 GT)
+  Avg Latency    : 23.08 frames
+  Avg Jaccard    : 0.6340
+Class GO:
+  Detection Rate : 0.4000  (6/15)
+  Misclass Rate  : 0.1333  (2/15)
+  False Pos Rate : 0.4667  (7 FP / 15 GT)
+  Avg Latency    : 29.00 frames
+  Avg Jaccard    : 0.1728
+Class GREETINGS:
+  Detection Rate : 0.5000  (7/14)
+  Misclass Rate  : 0.4286  (6/14)
+  False Pos Rate : 0.0000  (0 FP / 14 GT)
+  Avg Latency    : 24.14 frames
+  Avg Jaccard    : 0.2294
+Class OUR:
+  Detection Rate : 0.9286  (13/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.4286  (6 FP / 14 GT)
+  Avg Latency    : 19.54 frames
+  Avg Jaccard    : 0.3835
+Class READ:
+  Detection Rate : 0.8667  (13/15)
+  Misclass Rate  : 0.0000  (0/15)
+  False Pos Rate : 0.3333  (5 FP / 15 GT)
+  Avg Latency    : 23.85 frames
+  Avg Jaccard    : 0.4741
+Class SMALL:
+  Detection Rate : 1.0000  (16/16)
+  Misclass Rate  : 0.0000  (0/16)
+  False Pos Rate : 0.3125  (5 FP / 16 GT)
+  Avg Latency    : 16.50 frames
+  Avg Jaccard    : 0.5318
+Class TIGER:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0769  (1 FP / 13 GT)
+  Avg Latency    : 16.77 frames
+  Avg Jaccard    : 0.4939
+Class TRAIN:
+  Detection Rate : 0.6667  (8/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.5000  (6 FP / 12 GT)
+  Avg Latency    : 25.50 frames
+  Avg Jaccard    : 0.3026
+Class UGLY:
+  Detection Rate : 0.9231  (12/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.3077  (4 FP / 13 GT)
+  Avg Latency    : 15.42 frames
+  Avg Jaccard    : 0.4563
+Class VAN:
+  Detection Rate : 1.0000  (16/16)
+  Misclass Rate  : 0.0000  (0/16)
+  False Pos Rate : 0.0625  (1 FP / 16 GT)
+  Avg Latency    : 20.00 frames
+  Avg Jaccard    : 0.5843
+Class WHAT:
+  Detection Rate : 0.6429  (9/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.4286  (6 FP / 14 GT)
+  Avg Latency    : 17.67 frames
+  Avg Jaccard    : 0.2455
+Class WHICH:
+  Detection Rate : 0.6154  (8/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 1.0769  (14 FP / 13 GT)
+  Avg Latency    : 20.62 frames
+  Avg Jaccard    : 0.1757
+Class WRITE:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 16.92 frames
+  Avg Jaccard    : 0.5673
+
+--- Macro averages (across all classes) ---
+  Detection Rate : 0.8351
+  Misclass Rate  : 0.0502
+  False Pos Rate : 0.2258
+  Jaccard Index  : 0.4540
+============================================================
+Saved model checkpoint: trained_models/20260707T052907Z_thct_net_val-0.9947_75f077d4.pt
+Training curve saved to: trained_models/plots/curves_test_user1_20260707T035231Z_loss.png
+Training curve saved to: trained_models/plots/curves_test_user1_20260707T035231Z_accuracy.png
+Training curve saved to: trained_models/plots/curves_test_user1_20260707T035231Z_f1.png
+
+──────────────────────────────────────────────────────────────────────
+FOLD CONFIG: test_user=user2
+──────────────────────────────────────────────────────────────────────
+  Epochs            : 10
+  Learning rate     : 0.0003
+  Glosses/batch     : 12
+  Samples/gloss     : 12
+  Loss function     : CrossEntropyLoss
+  Augmentation      : True
+    Rotation prob   : 0.5 (range: ±8.0 deg)
+    Scaling prob    : 0.5 (range: [0.95, 1.05])
+    Noise prob      : 0.5 (std: 2.0 mm)
+    Dropout prob    : 0.35 (rate: 0.15)
+──────────────────────────────────────────────────────────────────────
+
+======================================================================
+FOLD: test_user=user2, dev_users=['user1', 'user3', 'user5']
+======================================================================
+Fold seed: 541 (base 44 + user offset)
+
+============================================================
+SPLIT: test_user=user2, dev_users=['user1', 'user3', 'user5']
+============================================================
+Dev removed by filter   : {'missing_data': 1, 'low_confidence': 1, 'too_short': 3}
+Test removed by filter  : {'too_short': 2}
+Train segments (filtered): 1411
+Val segments (filtered)  : 271
+Test segments (filtered) : 605
+Label mapping (string -> ID):
+  np.str_('AUGUST') -> 0
+  np.str_('BIG') -> 1
+  np.str_('BIRD') -> 2
+  np.str_('BOAT') -> 3
+  np.str_('COME') -> 4
+  np.str_('DRIVER') -> 5
+  np.str_('FARMING') -> 6
+  np.str_('FEBRUARY') -> 7
+  np.str_('GO') -> 8
+  np.str_('GREETINGS') -> 9
+  np.str_('OUR') -> 10
+  np.str_('READ') -> 11
+  np.str_('SMALL') -> 12
+  np.str_('TIGER') -> 13
+  np.str_('TRAIN') -> 14
+  np.str_('UGLY') -> 15
+  np.str_('VAN') -> 16
+  np.str_('WHAT') -> 17
+  np.str_('WHICH') -> 18
+  np.str_('WRITE') -> 19
+  np.str_('background') -> 20
+
+Total classes: 21
+Background class ID: 20
+WER catalog sizes -> train: 170, val: 33, test: 73
+Train windows: 87043 | Val windows: 16977 | Test windows: 32238
+Train batches: 605 | Val batches: 4245 | Test batches: 8060
+Loss function: CrossEntropyLoss
+Model: thct_net | Trainable params: 1,185,727
+[thct_net] using normalization: palm_ref
+Stabilization: grad_clip=True (norm=1.0), scheduler=True, early_stopping_patience=15
+Model selection criterion: validation macro-F1
+  -> [thct_net] new best in memory (val_f1=0.9514, val_acc=0.9790)
+thct_net | Epoch 01 | Loss: 0.4197 | Train Acc: 0.9103 | Train F1: 0.9115 | Val Loss: 0.0658 | Val Acc: 0.9790 | Val F1: 0.9514
+  -> [thct_net] new best in memory (val_f1=0.9727, val_acc=0.9876)
+thct_net | Epoch 02 | Loss: 0.0196 | Train Acc: 0.9948 | Train F1: 0.9947 | Val Loss: 0.0497 | Val Acc: 0.9876 | Val F1: 0.9727
+  -> [thct_net] new best in memory (val_f1=0.9779, val_acc=0.9902)
+thct_net | Epoch 03 | Loss: 0.0099 | Train Acc: 0.9971 | Train F1: 0.9971 | Val Loss: 0.0401 | Val Acc: 0.9902 | Val F1: 0.9779
+thct_net | Epoch 04 | Loss: 0.0082 | Train Acc: 0.9976 | Train F1: 0.9976 | Val Loss: 0.0575 | Val Acc: 0.9885 | Val F1: 0.9751
+thct_net | Epoch 05 | Loss: 0.0064 | Train Acc: 0.9980 | Train F1: 0.9980 | Val Loss: 0.0902 | Val Acc: 0.9789 | Val F1: 0.9630
+thct_net | Epoch 06 | Loss: 0.0058 | Train Acc: 0.9984 | Train F1: 0.9984 | Val Loss: 0.0479 | Val Acc: 0.9900 | Val F1: 0.9759
+  -> [thct_net] new best in memory (val_f1=0.9846, val_acc=0.9936)
+thct_net | Epoch 07 | Loss: 0.0060 | Train Acc: 0.9982 | Train F1: 0.9983 | Val Loss: 0.0253 | Val Acc: 0.9936 | Val F1: 0.9846
+  -> [thct_net] new best in memory (val_f1=0.9865, val_acc=0.9948)
+thct_net | Epoch 08 | Loss: 0.0053 | Train Acc: 0.9985 | Train F1: 0.9985 | Val Loss: 0.0222 | Val Acc: 0.9948 | Val F1: 0.9865
+thct_net | Epoch 09 | Loss: 0.0040 | Train Acc: 0.9988 | Train F1: 0.9988 | Val Loss: 0.0328 | Val Acc: 0.9928 | Val F1: 0.9806
+thct_net | Epoch 10 | Loss: 0.0042 | Train Acc: 0.9987 | Train F1: 0.9987 | Val Loss: 0.0492 | Val Acc: 0.9902 | Val F1: 0.9776
+
+thct_net per-epoch summary:
+      model normalization  epoch  train_loss  train_batch_acc  train_f1  val_loss   val_acc    val_f1
+0  thct_net      palm_ref      1    0.419694         0.910331  0.911512  0.065792  0.979030  0.951352
+1  thct_net      palm_ref      2    0.019575         0.994789  0.994741  0.049712  0.987630  0.972729
+2  thct_net      palm_ref      3    0.009858         0.997107  0.997101  0.040146  0.990222  0.977896
+3  thct_net      palm_ref      4    0.008181         0.997555  0.997558  0.057504  0.988455  0.975135
+4  thct_net      palm_ref      5    0.006401         0.998026  0.998017  0.090198  0.978854  0.963045
+5  thct_net      palm_ref      6    0.005849         0.998393  0.998393  0.047853  0.990045  0.975871
+6  thct_net      palm_ref      7    0.006007         0.998244  0.998259  0.025335  0.993580  0.984551
+7  thct_net      palm_ref      8    0.005304         0.998508  0.998518  0.022167  0.994758  0.986493
+8  thct_net      palm_ref      9    0.003999         0.998818  0.998811  0.032767  0.992755  0.980619
+9  thct_net      palm_ref     10    0.004189         0.998749  0.998741  0.049223  0.990163  0.977573
+[thct_net] best model restored from memory.
+
+========== TRAIN WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9982
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00      3948
+         BIG       1.00      1.00      1.00      4188
+        BIRD       1.00      1.00      1.00      3816
+        BOAT       1.00      1.00      1.00      4452
+        COME       0.99      1.00      1.00      4224
+      DRIVER       1.00      1.00      1.00      4332
+     FARMING       1.00      1.00      1.00      4020
+    FEBRUARY       0.99      1.00      1.00      3912
+          GO       1.00      1.00      1.00      4260
+   GREETINGS       1.00      0.98      0.99      4200
+         OUR       1.00      1.00      1.00      4092
+        READ       1.00      1.00      1.00      4392
+       SMALL       1.00      1.00      1.00      4140
+       TIGER       1.00      1.00      1.00      4128
+       TRAIN       1.00      0.99      0.99      4308
+        UGLY       0.98      1.00      0.99      3888
+         VAN       1.00      1.00      1.00      4236
+        WHAT       1.00      1.00      1.00      3972
+       WHICH       1.00      1.00      1.00      4188
+       WRITE       1.00      1.00      1.00      4260
+  background       1.00      1.00      1.00      4164
+
+    accuracy                           1.00     87120
+   macro avg       1.00      1.00      1.00     87120
+weighted avg       1.00      1.00      1.00     87120
+
+
+========== VAL WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9948
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00       509
+         BIG       1.00      1.00      1.00       178
+        BIRD       1.00      1.00      1.00       336
+        BOAT       1.00      1.00      1.00       238
+        COME       0.93      1.00      0.97       236
+      DRIVER       1.00      1.00      1.00       546
+     FARMING       1.00      1.00      1.00       325
+    FEBRUARY       0.97      1.00      0.98       456
+          GO       0.90      1.00      0.95       114
+   GREETINGS       1.00      1.00      1.00       351
+         OUR       1.00      0.92      0.96       196
+        READ       1.00      1.00      1.00       428
+       SMALL       0.96      1.00      0.98       307
+       TIGER       0.98      1.00      0.99       241
+       TRAIN       0.98      1.00      0.99       329
+        UGLY       0.98      0.95      0.96       288
+         VAN       1.00      1.00      1.00       230
+        WHAT       1.00      0.98      0.99        64
+       WHICH       0.97      0.92      0.95       375
+       WRITE       1.00      1.00      1.00       363
+  background       1.00      1.00      1.00     10867
+
+    accuracy                           0.99     16977
+   macro avg       0.98      0.99      0.99     16977
+weighted avg       0.99      0.99      0.99     16977
+
+Confusion matrix saved to: trained_models/plots/confusion_matrices/user2/val_confusion_normalized.png
+Misclassification matrix saved to: trained_models/plots/confusion_matrices/user2/val_confusion_misclassifications.png
+
+========== TEST WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9842
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00       978
+         BIG       0.87      0.91      0.89       465
+        BIRD       1.00      0.77      0.87       699
+        BOAT       0.95      1.00      0.97       357
+        COME       0.88      0.88      0.88       228
+      DRIVER       1.00      1.00      1.00      1210
+     FARMING       0.98      1.00      0.99       510
+    FEBRUARY       1.00      0.99      1.00      1039
+          GO       0.75      0.85      0.80       172
+   GREETINGS       0.99      1.00      1.00       673
+         OUR       0.92      0.95      0.94       275
+        READ       1.00      1.00      1.00      1178
+       SMALL       0.91      0.98      0.94       504
+       TIGER       1.00      1.00      1.00       241
+       TRAIN       1.00      0.99      1.00       428
+        UGLY       0.99      0.76      0.86       299
+         VAN       1.00      1.00      1.00       216
+        WHAT       1.00      1.00      1.00        18
+       WHICH       0.98      0.99      0.98       754
+       WRITE       1.00      1.00      1.00       605
+  background       0.99      0.99      0.99     21389
+
+    accuracy                           0.98     32238
+   macro avg       0.96      0.96      0.96     32238
+weighted avg       0.98      0.98      0.98     32238
+
+Confusion matrix saved to: trained_models/plots/confusion_matrices/user2/test_confusion_normalized.png
+Misclassification matrix saved to: trained_models/plots/confusion_matrices/user2/test_confusion_misclassifications.png
+
+========== WINDOW ACCURACY SUMMARY ==========
+split  frame_accuracy
+Train        0.998198
+  Val        0.994758
+ Test        0.984211
+
+========== TEST (USER2) WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : thct_net_batch
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 73
+Mean WER:   0.0468
+Median WER: 0.0000
+Std WER:    0.1013
+
+Showing 5 example sequence(s):
+  [1] user2 | P2_S7_R4
+    Frames       : 600 | Missing ratio: 0.000
+    Stream steps : 571 | Emitted: 3
+    GT           : ['COME', 'DRIVER', 'BIRD']
+    Prediction   : ['COME', 'DRIVER', 'BIRD']
+    WER          : 0.0000
+    Emit regions : [(33, 69, np.str_('COME')), (130, 232, np.str_('DRIVER')), (306, 376, np.str_('BIRD'))]
+    GT segments  : [{'label': 'COME', 'start_frame': 6, 'end_frame': 52}, {'label': 'DRIVER', 'start_frame': 118, 'end_frame': 211}, {'label': 'BIRD', 'start_frame': 287, 'end_frame': 365}]
+  [2] user2 | P2_S2_R6
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    Prediction   : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    WER          : 0.0000
+    Emit regions : [(84, 140, np.str_('FARMING')), (250, 333, np.str_('BIG')), (411, 457, np.str_('VAN')), (587, 678, np.str_('SMALL'))]
+    GT segments  : [{'label': 'FARMING', 'start_frame': 72, 'end_frame': 124}, {'label': 'BIG', 'start_frame': 238, 'end_frame': 290}, {'label': 'VAN', 'start_frame': 399, 'end_frame': 438}, {'label': 'SMALL', 'start_frame': 566, 'end_frame': 620}]
+  [3] user2 | P2_S10_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(75, 141, np.str_('SMALL')), (343, 491, np.str_('FEBRUARY')), (554, 605, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 53, 'end_frame': 117}, {'label': 'FEBRUARY', 'start_frame': 331, 'end_frame': 477}, {'label': 'BOAT', 'start_frame': 543, 'end_frame': 589}]
+  [4] user2 | P2_S1_R6
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['GO', 'READ', 'OUR', 'COME']
+    Prediction   : ['GO', 'READ', 'OUR', 'COME']
+    WER          : 0.0000
+    Emit regions : [(85, 122, np.str_('GO')), (176, 282, np.str_('READ')), (360, 387, np.str_('OUR')), (472, 522, np.str_('COME'))]
+    GT segments  : [{'label': 'GO', 'start_frame': 75, 'end_frame': 110}, {'label': 'READ', 'start_frame': 163, 'end_frame': 273}, {'label': 'OUR', 'start_frame': 328, 'end_frame': 375}, {'label': 'COME', 'start_frame': 453, 'end_frame': 495}]
+  [5] user2 | P2_S8_R2
+    Frames       : 600 | Missing ratio: 0.000
+    Stream steps : 571 | Emitted: 5
+    GT           : ['BIG', 'GREETINGS', 'WHICH', 'FARMING']
+    Prediction   : ['BIG', 'BIG', 'GREETINGS', 'WHICH', 'FARMING']
+    WER          : 0.2500
+    Emit regions : [(33, 72, np.str_('BIG')), (81, 120, np.str_('BIG')), (205, 258, np.str_('GREETINGS')), (306, 382, np.str_('WHICH')), (446, 513, np.str_('FARMING'))]
+    GT segments  : [{'label': 'BIG', 'start_frame': 18, 'end_frame': 92}, {'label': 'GREETINGS', 'start_frame': 182, 'end_frame': 238}, {'label': 'WHICH', 'start_frame': 276, 'end_frame': 355}, {'label': 'FARMING', 'start_frame': 434, 'end_frame': 500}]
+[test_user2_20260707T035231Z] metadata -> trained_models/results/test_user2_20260707t035231z_metadata.parquet
+[test_user2_20260707T035231Z] arrays   -> trained_models/results/test_user2_20260707t035231z_arrays.npz
+  sequences : 73
+  npz keys  : 584
+
+========== DEV VAL WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : thct_net_batch
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 33
+Mean WER:   0.0354
+Median WER: 0.0000
+Std WER:    0.1407
+
+Showing 5 example sequence(s):
+  [1] user1 | P1_S8_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['BIG', 'GREETINGS', 'WHICH', 'FARMING']
+    Prediction   : ['BIG', 'GREETINGS', 'WHICH', 'FARMING']
+    WER          : 0.0000
+    Emit regions : [(88, 151, np.str_('BIG')), (223, 287, np.str_('GREETINGS')), (308, 390, np.str_('WHICH')), (422, 524, np.str_('FARMING'))]
+    GT segments  : [{'label': 'BIG', 'start_frame': 58, 'end_frame': 127}, {'label': 'GREETINGS', 'start_frame': 204, 'end_frame': 270}, {'label': 'WHICH', 'start_frame': 291, 'end_frame': 376}, {'label': 'FARMING', 'start_frame': 408, 'end_frame': 511}]
+  [2] user1 | P1_S6_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 5
+    GT           : ['WHICH', 'OUR', 'TRAIN']
+    Prediction   : ['WHICH', 'COME', 'WHICH', 'OUR', 'TRAIN']
+    WER          : 0.6667
+    Emit regions : [(76, 143, np.str_('WHICH')), (145, 160, np.str_('COME')), (161, 209, np.str_('WHICH')), (253, 344, np.str_('OUR')), (386, 473, np.str_('TRAIN'))]
+    GT segments  : [{'label': 'WHICH', 'start_frame': 58, 'end_frame': 198}, {'label': 'OUR', 'start_frame': 237, 'end_frame': 333}, {'label': 'TRAIN', 'start_frame': 373, 'end_frame': 463}]
+  [3] user1 | P1_S1_R8
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['GO', 'READ', 'OUR', 'COME']
+    Prediction   : ['GO', 'READ', 'OUR', 'COME']
+    WER          : 0.0000
+    Emit regions : [(72, 113, np.str_('GO')), (170, 239, np.str_('READ')), (294, 346, np.str_('OUR')), (413, 477, np.str_('COME'))]
+    GT segments  : [{'label': 'GO', 'start_frame': 47, 'end_frame': 101}, {'label': 'READ', 'start_frame': 154, 'end_frame': 232}, {'label': 'OUR', 'start_frame': 275, 'end_frame': 335}, {'label': 'COME', 'start_frame': 394, 'end_frame': 460}]
+  [4] user1 | P1_S10_R6
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(43, 116, np.str_('SMALL')), (174, 281, np.str_('FEBRUARY')), (336, 414, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 17, 'end_frame': 98}, {'label': 'FEBRUARY', 'start_frame': 156, 'end_frame': 263}, {'label': 'BOAT', 'start_frame': 320, 'end_frame': 393}]
+  [5] user1 | P1_S5_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['BIRD', 'WHAT', 'DRIVER', 'GREETINGS']
+    Prediction   : ['BIRD', 'WHAT', 'DRIVER', 'GREETINGS']
+    WER          : 0.0000
+    Emit regions : [(48, 138, np.str_('BIRD')), (188, 224, np.str_('WHAT')), (302, 423, np.str_('DRIVER')), (506, 639, np.str_('GREETINGS'))]
+    GT segments  : [{'label': 'BIRD', 'start_frame': 30, 'end_frame': 114}, {'label': 'WHAT', 'start_frame': 170, 'end_frame': 207}, {'label': 'DRIVER', 'start_frame': 286, 'end_frame': 406}, {'label': 'GREETINGS', 'start_frame': 490, 'end_frame': 620}]
+[val_user2_20260707T035231Z] metadata -> trained_models/results/val_user2_20260707t035231z_metadata.parquet
+[val_user2_20260707T035231Z] arrays   -> trained_models/results/val_user2_20260707t035231z_arrays.npz
+  sequences : 33
+  npz keys  : 264
+
+============================================================
+STREAMING METRICS EVALUATION (from WER outputs) — Test (user2)
+============================================================
+Sequences: 73 | Classes: 21
+Running: corrected
+
+
+────────────────────────────────────────────────────────────
+CORRECTED METRICS (SHREC'21 protocol) — Test (user2)
+────────────────────────────────────────────────────────────
+============================================================
+GLOBAL RESULTS  (Corrected — SHREC'21 protocol)
+============================================================
+Class AUGUST:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 15.62 frames
+  Avg Jaccard    : 0.7644
+Class BIG:
+  Detection Rate : 1.0000  (15/15)
+  Misclass Rate  : 0.0000  (0/15)
+  False Pos Rate : 0.0667  (1 FP / 15 GT)
+  Avg Latency    : 14.27 frames
+  Avg Jaccard    : 0.5339
+Class BIRD:
+  Detection Rate : 0.5833  (7/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0833  (1 FP / 12 GT)
+  Avg Latency    : 18.86 frames
+  Avg Jaccard    : 0.3877
+Class BOAT:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 21.38 frames
+  Avg Jaccard    : 0.5597
+Class COME:
+  Detection Rate : 0.7857  (11/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.2143  (3 FP / 14 GT)
+  Avg Latency    : 15.27 frames
+  Avg Jaccard    : 0.2959
+Class DRIVER:
+  Detection Rate : 1.0000  (12/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0000  (0 FP / 12 GT)
+  Avg Latency    : 12.25 frames
+  Avg Jaccard    : 0.8012
+Class FARMING:
+  Detection Rate : 1.0000  (15/15)
+  Misclass Rate  : 0.0000  (0/15)
+  False Pos Rate : 0.0000  (0 FP / 15 GT)
+  Avg Latency    : 17.60 frames
+  Avg Jaccard    : 0.6210
+Class FEBRUARY:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 17.85 frames
+  Avg Jaccard    : 0.7668
+Class GO:
+  Detection Rate : 0.6429  (9/14)
+  Misclass Rate  : 0.3571  (5/14)
+  False Pos Rate : 0.0714  (1 FP / 14 GT)
+  Avg Latency    : 17.44 frames
+  Avg Jaccard    : 0.2321
+Class GREETINGS:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 16.69 frames
+  Avg Jaccard    : 0.6102
+Class OUR:
+  Detection Rate : 0.2857  (4/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.7143  (10 FP / 14 GT)
+  Avg Latency    : 22.75 frames
+  Avg Jaccard    : 0.1303
+Class READ:
+  Detection Rate : 1.0000  (14/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.0000  (0 FP / 14 GT)
+  Avg Latency    : 14.79 frames
+  Avg Jaccard    : 0.7992
+Class SMALL:
+  Detection Rate : 1.0000  (14/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.0000  (0 FP / 14 GT)
+  Avg Latency    : 22.00 frames
+  Avg Jaccard    : 0.4754
+Class TIGER:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 16.38 frames
+  Avg Jaccard    : 0.4144
+Class TRAIN:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 15.46 frames
+  Avg Jaccard    : 0.6194
+Class UGLY:
+  Detection Rate : 0.9231  (12/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.1538  (2 FP / 13 GT)
+  Avg Latency    : 11.67 frames
+  Avg Jaccard    : 0.4733
+Class VAN:
+  Detection Rate : 0.9286  (13/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.0714  (1 FP / 14 GT)
+  Avg Latency    : 14.46 frames
+  Avg Jaccard    : 0.4057
+Class WHAT:
+  Detection Rate : 0.0833  (1/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.9167  (11 FP / 12 GT)
+  Avg Latency    : 13.00 frames
+  Avg Jaccard    : 0.0977
+Class WHICH:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 23.31 frames
+  Avg Jaccard    : 0.6131
+Class WRITE:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 12.62 frames
+  Avg Jaccard    : 0.6409
+
+--- Macro averages (across all classes) ---
+  Detection Rate : 0.8652
+  Misclass Rate  : 0.0187
+  False Pos Rate : 0.1124
+  Jaccard Index  : 0.5121
+============================================================
+Saved model checkpoint: trained_models/20260707T070632Z_thct_net_val-0.9948_012926cd.pt
+Training curve saved to: trained_models/plots/curves_test_user2_20260707T035231Z_loss.png
+Training curve saved to: trained_models/plots/curves_test_user2_20260707T035231Z_accuracy.png
+Training curve saved to: trained_models/plots/curves_test_user2_20260707T035231Z_f1.png
+
+──────────────────────────────────────────────────────────────────────
+FOLD CONFIG: test_user=user3
+──────────────────────────────────────────────────────────────────────
+  Epochs            : 10
+  Learning rate     : 0.0003
+  Glosses/batch     : 12
+  Samples/gloss     : 12
+  Loss function     : CrossEntropyLoss
+  Augmentation      : True
+    Rotation prob   : 0.5 (range: ±8.0 deg)
+    Scaling prob    : 0.5 (range: [0.95, 1.05])
+    Noise prob      : 0.5 (std: 2.0 mm)
+    Dropout prob    : 0.35 (rate: 0.15)
+──────────────────────────────────────────────────────────────────────
+
+======================================================================
+FOLD: test_user=user3, dev_users=['user1', 'user2', 'user5']
+======================================================================
+Fold seed: 542 (base 44 + user offset)
+
+============================================================
+SPLIT: test_user=user3, dev_users=['user1', 'user2', 'user5']
+============================================================
+Dev removed by filter   : {'missing_data': 1, 'low_confidence': 1, 'too_short': 4}
+Test removed by filter  : {'too_short': 1}
+Train segments (filtered): 1559
+Val segments (filtered)  : 271
+Test segments (filtered) : 457
+Label mapping (string -> ID):
+  np.str_('AUGUST') -> 0
+  np.str_('BIG') -> 1
+  np.str_('BIRD') -> 2
+  np.str_('BOAT') -> 3
+  np.str_('COME') -> 4
+  np.str_('DRIVER') -> 5
+  np.str_('FARMING') -> 6
+  np.str_('FEBRUARY') -> 7
+  np.str_('GO') -> 8
+  np.str_('GREETINGS') -> 9
+  np.str_('OUR') -> 10
+  np.str_('READ') -> 11
+  np.str_('SMALL') -> 12
+  np.str_('TIGER') -> 13
+  np.str_('TRAIN') -> 14
+  np.str_('UGLY') -> 15
+  np.str_('VAN') -> 16
+  np.str_('WHAT') -> 17
+  np.str_('WHICH') -> 18
+  np.str_('WRITE') -> 19
+  np.str_('background') -> 20
+
+Total classes: 21
+Background class ID: 20
+WER catalog sizes -> train: 188, val: 33, test: 55
+Train windows: 92146 | Val windows: 16087 | Test windows: 28025
+Train batches: 640 | Val batches: 4022 | Test batches: 7007
+Loss function: CrossEntropyLoss
+Model: thct_net | Trainable params: 1,185,727
+[thct_net] using normalization: palm_ref
+Stabilization: grad_clip=True (norm=1.0), scheduler=True, early_stopping_patience=15
+Model selection criterion: validation macro-F1
+  -> [thct_net] new best in memory (val_f1=0.9475, val_acc=0.9754)
+thct_net | Epoch 01 | Loss: 0.4020 | Train Acc: 0.9187 | Train F1: 0.9190 | Val Loss: 0.1010 | Val Acc: 0.9754 | Val F1: 0.9475
+  -> [thct_net] new best in memory (val_f1=0.9523, val_acc=0.9795)
+thct_net | Epoch 02 | Loss: 0.0190 | Train Acc: 0.9948 | Train F1: 0.9947 | Val Loss: 0.0823 | Val Acc: 0.9795 | Val F1: 0.9523
+  -> [thct_net] new best in memory (val_f1=0.9651, val_acc=0.9840)
+thct_net | Epoch 03 | Loss: 0.0129 | Train Acc: 0.9963 | Train F1: 0.9963 | Val Loss: 0.0797 | Val Acc: 0.9840 | Val F1: 0.9651
+  -> [thct_net] new best in memory (val_f1=0.9734, val_acc=0.9879)
+thct_net | Epoch 04 | Loss: 0.0089 | Train Acc: 0.9974 | Train F1: 0.9974 | Val Loss: 0.0628 | Val Acc: 0.9879 | Val F1: 0.9734
+thct_net | Epoch 05 | Loss: 0.0075 | Train Acc: 0.9976 | Train F1: 0.9976 | Val Loss: 0.0700 | Val Acc: 0.9851 | Val F1: 0.9678
+thct_net | Epoch 06 | Loss: 0.0057 | Train Acc: 0.9982 | Train F1: 0.9982 | Val Loss: 0.0542 | Val Acc: 0.9873 | Val F1: 0.9733
+thct_net | Epoch 07 | Loss: 0.0051 | Train Acc: 0.9986 | Train F1: 0.9986 | Val Loss: 0.0800 | Val Acc: 0.9830 | Val F1: 0.9567
+thct_net | Epoch 08 | Loss: 0.0064 | Train Acc: 0.9982 | Train F1: 0.9982 | Val Loss: 0.0605 | Val Acc: 0.9882 | Val F1: 0.9721
+  -> [thct_net] new best in memory (val_f1=0.9734, val_acc=0.9886)
+thct_net | Epoch 09 | Loss: 0.0053 | Train Acc: 0.9984 | Train F1: 0.9984 | Val Loss: 0.0561 | Val Acc: 0.9886 | Val F1: 0.9734
+  -> [thct_net] new best in memory (val_f1=0.9786, val_acc=0.9909)
+thct_net | Epoch 10 | Loss: 0.0046 | Train Acc: 0.9986 | Train F1: 0.9986 | Val Loss: 0.0430 | Val Acc: 0.9909 | Val F1: 0.9786
+
+thct_net per-epoch summary:
+      model normalization  epoch  train_loss  train_batch_acc  train_f1  val_loss   val_acc    val_f1
+0  thct_net      palm_ref      1    0.401975         0.918739  0.919000  0.101009  0.975446  0.947464
+1  thct_net      palm_ref      2    0.019036         0.994759  0.994736  0.082306  0.979487  0.952270
+2  thct_net      palm_ref      3    0.012925         0.996278  0.996250  0.079735  0.983962  0.965122
+3  thct_net      palm_ref      4    0.008898         0.997396  0.997391  0.062770  0.987941  0.973385
+4  thct_net      palm_ref      5    0.007451         0.997591  0.997571  0.070006  0.985081  0.967830
+5  thct_net      palm_ref      6    0.005747         0.998220  0.998231  0.054181  0.987319  0.973265
+6  thct_net      palm_ref      7    0.005120         0.998633  0.998632  0.080022  0.982968  0.956747
+7  thct_net      palm_ref      8    0.006354         0.998210  0.998195  0.060490  0.988189  0.972144
+8  thct_net      palm_ref      9    0.005344         0.998383  0.998379  0.056094  0.988562  0.973427
+9  thct_net      palm_ref     10    0.004579         0.998611  0.998622  0.042969  0.990924  0.978589
+[thct_net] best model restored from memory.
+
+========== TRAIN WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9991
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00      4368
+         BIG       1.00      1.00      1.00      4224
+        BIRD       1.00      1.00      1.00      4344
+        BOAT       1.00      1.00      1.00      4284
+        COME       1.00      0.99      1.00      4416
+      DRIVER       1.00      1.00      1.00      4152
+     FARMING       1.00      1.00      1.00      4500
+    FEBRUARY       1.00      1.00      1.00      4392
+          GO       1.00      1.00      1.00      4572
+   GREETINGS       1.00      1.00      1.00      4380
+         OUR       1.00      1.00      1.00      4344
+        READ       1.00      1.00      1.00      4284
+       SMALL       1.00      1.00      1.00      4320
+       TIGER       1.00      1.00      1.00      4212
+       TRAIN       1.00      1.00      1.00      4572
+        UGLY       0.99      1.00      1.00      4668
+         VAN       1.00      1.00      1.00      4236
+        WHAT       1.00      1.00      1.00      4344
+       WHICH       1.00      1.00      1.00      4608
+       WRITE       1.00      1.00      1.00      4500
+  background       1.00      1.00      1.00      4440
+
+    accuracy                           1.00     92160
+   macro avg       1.00      1.00      1.00     92160
+weighted avg       1.00      1.00      1.00     92160
+
+
+========== VAL WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9909
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00       489
+         BIG       0.91      1.00      0.95       206
+        BIRD       1.00      1.00      1.00       305
+        BOAT       1.00      1.00      1.00       210
+        COME       0.98      1.00      0.99       207
+      DRIVER       1.00      1.00      1.00       589
+     FARMING       1.00      0.98      0.99       320
+    FEBRUARY       0.95      1.00      0.97       460
+          GO       0.94      1.00      0.97       127
+   GREETINGS       1.00      1.00      1.00       298
+         OUR       0.95      0.88      0.91       165
+        READ       1.00      1.00      1.00       480
+       SMALL       0.91      0.99      0.94       282
+       TIGER       0.98      1.00      0.99       195
+       TRAIN       0.99      1.00      0.99       251
+        UGLY       0.91      0.89      0.90       245
+         VAN       0.96      1.00      0.98       162
+        WHAT       1.00      1.00      1.00        45
+       WHICH       0.96      0.95      0.96       329
+       WRITE       1.00      1.00      1.00       326
+  background       1.00      0.99      1.00     10396
+
+    accuracy                           0.99     16087
+   macro avg       0.97      0.98      0.98     16087
+weighted avg       0.99      0.99      0.99     16087
+
+Confusion matrix saved to: trained_models/plots/confusion_matrices/user3/val_confusion_normalized.png
+Misclassification matrix saved to: trained_models/plots/confusion_matrices/user3/val_confusion_misclassifications.png
+
+========== TEST WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9648
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00       845
+         BIG       1.00      1.00      1.00       371
+        BIRD       1.00      1.00      1.00       555
+        BOAT       1.00      0.66      0.80       490
+        COME       0.94      0.96      0.95       331
+      DRIVER       1.00      1.00      1.00      1005
+     FARMING       0.97      0.93      0.95       634
+    FEBRUARY       0.58      1.00      0.73       746
+          GO       0.97      1.00      0.98        91
+   GREETINGS       1.00      0.18      0.31       597
+         OUR       0.87      0.97      0.92       281
+        READ       0.84      1.00      0.91       756
+       SMALL       1.00      1.00      1.00       575
+       TIGER       1.00      1.00      1.00       332
+       TRAIN       1.00      1.00      1.00       446
+        UGLY       0.71      0.86      0.78       451
+         VAN       0.95      1.00      0.97       500
+        WHAT       1.00      0.82      0.90        73
+       WHICH       1.00      1.00      1.00       523
+       WRITE       1.00      1.00      1.00       798
+  background       1.00      0.99      0.99     17625
+
+    accuracy                           0.96     28025
+   macro avg       0.94      0.92      0.91     28025
+weighted avg       0.98      0.96      0.96     28025
+
+Confusion matrix saved to: trained_models/plots/confusion_matrices/user3/test_confusion_normalized.png
+Misclassification matrix saved to: trained_models/plots/confusion_matrices/user3/test_confusion_misclassifications.png
+
+========== WINDOW ACCURACY SUMMARY ==========
+split  frame_accuracy
+Train        0.999121
+  Val        0.990924
+ Test        0.964781
+
+========== TEST (USER3) WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : thct_net_batch
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 55
+Mean WER:   0.0682
+Median WER: 0.0000
+Std WER:    0.1272
+
+Showing 5 example sequence(s):
+  [1] user3 | P3_S9_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['TIGER', 'WHAT', 'VAN', 'READ']
+    Prediction   : ['TIGER', 'WHAT', 'VAN', 'READ']
+    WER          : 0.0000
+    Emit regions : [(66, 118, np.str_('TIGER')), (210, 231, np.str_('WHAT')), (334, 406, np.str_('VAN')), (470, 592, np.str_('READ'))]
+    GT segments  : [{'label': 'TIGER', 'start_frame': 43, 'end_frame': 97}, {'label': 'WHAT', 'start_frame': 188, 'end_frame': 218}, {'label': 'VAN', 'start_frame': 312, 'end_frame': 384}, {'label': 'READ', 'start_frame': 459, 'end_frame': 574}]
+  [2] user3 | P3_S9_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['TIGER', 'WHAT', 'VAN', 'READ']
+    Prediction   : ['TIGER', 'WHAT', 'VAN', 'READ']
+    WER          : 0.0000
+    Emit regions : [(55, 111, np.str_('TIGER')), (236, 274, np.str_('WHAT')), (379, 464, np.str_('VAN')), (528, 621, np.str_('READ'))]
+    GT segments  : [{'label': 'TIGER', 'start_frame': 30, 'end_frame': 97}, {'label': 'WHAT', 'start_frame': 217, 'end_frame': 251}, {'label': 'VAN', 'start_frame': 357, 'end_frame': 436}, {'label': 'READ', 'start_frame': 518, 'end_frame': 608}]
+  [3] user3 | P3_S2_R8
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    Prediction   : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    WER          : 0.0000
+    Emit regions : [(33, 110, np.str_('FARMING')), (187, 247, np.str_('BIG')), (357, 436, np.str_('VAN')), (518, 591, np.str_('SMALL'))]
+    GT segments  : [{'label': 'FARMING', 'start_frame': 14, 'end_frame': 92}, {'label': 'BIG', 'start_frame': 183, 'end_frame': 240}, {'label': 'VAN', 'start_frame': 341, 'end_frame': 416}, {'label': 'SMALL', 'start_frame': 500, 'end_frame': 578}]
+  [4] user3 | P3_S2_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    Prediction   : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    WER          : 0.0000
+    Emit regions : [(48, 128, np.str_('FARMING')), (191, 266, np.str_('BIG')), (349, 439, np.str_('VAN')), (495, 566, np.str_('SMALL'))]
+    GT segments  : [{'label': 'FARMING', 'start_frame': 41, 'end_frame': 107}, {'label': 'BIG', 'start_frame': 185, 'end_frame': 257}, {'label': 'VAN', 'start_frame': 341, 'end_frame': 414}, {'label': 'SMALL', 'start_frame': 473, 'end_frame': 556}]
+  [5] user3 | P3_S4_R4
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['BOAT', 'TRAIN', 'TIGER']
+    Prediction   : ['BOAT', 'TRAIN', 'TIGER']
+    WER          : 0.0000
+    Emit regions : [(33, 83, np.str_('BOAT')), (210, 296, np.str_('TRAIN')), (396, 455, np.str_('TIGER'))]
+    GT segments  : [{'label': 'BOAT', 'start_frame': 0, 'end_frame': 66}, {'label': 'TRAIN', 'start_frame': 199, 'end_frame': 282}, {'label': 'TIGER', 'start_frame': 371, 'end_frame': 433}]
+[test_user3_20260707T035231Z] metadata -> trained_models/results/test_user3_20260707t035231z_metadata.parquet
+[test_user3_20260707T035231Z] arrays   -> trained_models/results/test_user3_20260707t035231z_arrays.npz
+  sequences : 55
+  npz keys  : 440
+
+========== DEV VAL WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : thct_net_batch
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 33
+Mean WER:   0.0076
+Median WER: 0.0000
+Std WER:    0.0429
+
+Showing 5 example sequence(s):
+  [1] user1 | P1_S8_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['BIG', 'GREETINGS', 'WHICH', 'FARMING']
+    Prediction   : ['BIG', 'GREETINGS', 'WHICH', 'FARMING']
+    WER          : 0.0000
+    Emit regions : [(85, 151, np.str_('BIG')), (225, 285, np.str_('GREETINGS')), (307, 391, np.str_('WHICH')), (422, 528, np.str_('FARMING'))]
+    GT segments  : [{'label': 'BIG', 'start_frame': 58, 'end_frame': 127}, {'label': 'GREETINGS', 'start_frame': 204, 'end_frame': 270}, {'label': 'WHICH', 'start_frame': 291, 'end_frame': 376}, {'label': 'FARMING', 'start_frame': 408, 'end_frame': 511}]
+  [2] user1 | P1_S6_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['WHICH', 'OUR', 'TRAIN']
+    Prediction   : ['WHICH', 'OUR', 'TRAIN']
+    WER          : 0.0000
+    Emit regions : [(79, 209, np.str_('WHICH')), (247, 349, np.str_('OUR')), (386, 487, np.str_('TRAIN'))]
+    GT segments  : [{'label': 'WHICH', 'start_frame': 58, 'end_frame': 198}, {'label': 'OUR', 'start_frame': 237, 'end_frame': 333}, {'label': 'TRAIN', 'start_frame': 373, 'end_frame': 463}]
+  [3] user1 | P1_S1_R8
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['GO', 'READ', 'OUR', 'COME']
+    Prediction   : ['GO', 'READ', 'OUR', 'COME']
+    WER          : 0.0000
+    Emit regions : [(72, 113, np.str_('GO')), (160, 242, np.str_('READ')), (290, 350, np.str_('OUR')), (408, 477, np.str_('COME'))]
+    GT segments  : [{'label': 'GO', 'start_frame': 47, 'end_frame': 101}, {'label': 'READ', 'start_frame': 154, 'end_frame': 232}, {'label': 'OUR', 'start_frame': 275, 'end_frame': 335}, {'label': 'COME', 'start_frame': 394, 'end_frame': 460}]
+  [4] user1 | P1_S10_R6
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(40, 115, np.str_('SMALL')), (172, 282, np.str_('FEBRUARY')), (327, 414, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 17, 'end_frame': 98}, {'label': 'FEBRUARY', 'start_frame': 156, 'end_frame': 263}, {'label': 'BOAT', 'start_frame': 320, 'end_frame': 393}]
+  [5] user1 | P1_S5_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['BIRD', 'WHAT', 'DRIVER', 'GREETINGS']
+    Prediction   : ['BIRD', 'WHAT', 'DRIVER', 'GREETINGS']
+    WER          : 0.0000
+    Emit regions : [(49, 139, np.str_('BIRD')), (193, 224, np.str_('WHAT')), (304, 419, np.str_('DRIVER')), (506, 640, np.str_('GREETINGS'))]
+    GT segments  : [{'label': 'BIRD', 'start_frame': 30, 'end_frame': 114}, {'label': 'WHAT', 'start_frame': 170, 'end_frame': 207}, {'label': 'DRIVER', 'start_frame': 286, 'end_frame': 406}, {'label': 'GREETINGS', 'start_frame': 490, 'end_frame': 620}]
+[val_user3_20260707T035231Z] metadata -> trained_models/results/val_user3_20260707t035231z_metadata.parquet
+[val_user3_20260707T035231Z] arrays   -> trained_models/results/val_user3_20260707t035231z_arrays.npz
+  sequences : 33
+  npz keys  : 264
+
+============================================================
+STREAMING METRICS EVALUATION (from WER outputs) — Test (user3)
+============================================================
+Sequences: 55 | Classes: 21
+Running: corrected
+
+
+────────────────────────────────────────────────────────────
+CORRECTED METRICS (SHREC'21 protocol) — Test (user3)
+────────────────────────────────────────────────────────────
+============================================================
+GLOBAL RESULTS  (Corrected — SHREC'21 protocol)
+============================================================
+Class AUGUST:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 18.70 frames
+  Avg Jaccard    : 0.7631
+Class BIG:
+  Detection Rate : 1.0000  (12/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0000  (0 FP / 12 GT)
+  Avg Latency    : 6.67 frames
+  Avg Jaccard    : 0.7438
+Class BIRD:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 20.50 frames
+  Avg Jaccard    : 0.5775
+Class BOAT:
+  Detection Rate : 0.6000  (6/10)
+  Misclass Rate  : 0.3000  (3/10)
+  False Pos Rate : 0.1000  (1 FP / 10 GT)
+  Avg Latency    : 36.67 frames
+  Avg Jaccard    : 0.3305
+Class COME:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.1000  (1 FP / 10 GT)
+  Avg Latency    : 17.10 frames
+  Avg Jaccard    : 0.4938
+Class DRIVER:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 23.30 frames
+  Avg Jaccard    : 0.7344
+Class FARMING:
+  Detection Rate : 1.0000  (12/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0000  (0 FP / 12 GT)
+  Avg Latency    : 31.58 frames
+  Avg Jaccard    : 0.6414
+Class FEBRUARY:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 19.90 frames
+  Avg Jaccard    : 0.6623
+Class GO:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 14.20 frames
+  Avg Jaccard    : 0.4541
+Class GREETINGS:
+  Detection Rate : 0.1818  (2/11)
+  Misclass Rate  : 0.8182  (9/11)
+  False Pos Rate : 0.0000  (0 FP / 11 GT)
+  Avg Latency    : 24.00 frames
+  Avg Jaccard    : 0.0534
+Class OUR:
+  Detection Rate : 1.0000  (8/8)
+  Misclass Rate  : 0.0000  (0/8)
+  False Pos Rate : 0.0000  (0 FP / 8 GT)
+  Avg Latency    : 29.25 frames
+  Avg Jaccard    : 0.4504
+Class READ:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 20.80 frames
+  Avg Jaccard    : 0.8006
+Class SMALL:
+  Detection Rate : 1.0000  (11/11)
+  Misclass Rate  : 0.0000  (0/11)
+  False Pos Rate : 0.0000  (0 FP / 11 GT)
+  Avg Latency    : 20.82 frames
+  Avg Jaccard    : 0.6492
+Class TIGER:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 22.00 frames
+  Avg Jaccard    : 0.4812
+Class TRAIN:
+  Detection Rate : 1.0000  (8/8)
+  Misclass Rate  : 0.0000  (0/8)
+  False Pos Rate : 0.0000  (0 FP / 8 GT)
+  Avg Latency    : 12.12 frames
+  Avg Jaccard    : 0.7386
+Class UGLY:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.1000  (1 FP / 10 GT)
+  Avg Latency    : 16.50 frames
+  Avg Jaccard    : 0.5227
+Class VAN:
+  Detection Rate : 1.0000  (11/11)
+  Misclass Rate  : 0.0000  (0/11)
+  False Pos Rate : 0.0000  (0 FP / 11 GT)
+  Avg Latency    : 22.91 frames
+  Avg Jaccard    : 0.5984
+Class WHAT:
+  Detection Rate : 0.3000  (3/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.6000  (6 FP / 10 GT)
+  Avg Latency    : 23.33 frames
+  Avg Jaccard    : 0.0988
+Class WHICH:
+  Detection Rate : 1.0000  (9/9)
+  Misclass Rate  : 0.0000  (0/9)
+  False Pos Rate : 0.0000  (0 FP / 9 GT)
+  Avg Latency    : 19.22 frames
+  Avg Jaccard    : 0.6304
+Class WRITE:
+  Detection Rate : 1.0000  (10/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.0000  (0 FP / 10 GT)
+  Avg Latency    : 28.90 frames
+  Avg Jaccard    : 0.7101
+
+--- Macro averages (across all classes) ---
+  Detection Rate : 0.9010
+  Misclass Rate  : 0.0594
+  False Pos Rate : 0.0446
+  Jaccard Index  : 0.5567
+============================================================
+Saved model checkpoint: trained_models/20260707T084650Z_thct_net_val-0.9909_24571ed0.pt
+Training curve saved to: trained_models/plots/curves_test_user3_20260707T035231Z_loss.png
+Training curve saved to: trained_models/plots/curves_test_user3_20260707T035231Z_accuracy.png
+Training curve saved to: trained_models/plots/curves_test_user3_20260707T035231Z_f1.png
+
+──────────────────────────────────────────────────────────────────────
+FOLD CONFIG: test_user=user5
+──────────────────────────────────────────────────────────────────────
+  Epochs            : 10
+  Learning rate     : 0.0003
+  Glosses/batch     : 12
+  Samples/gloss     : 12
+  Loss function     : CrossEntropyLoss
+  Augmentation      : True
+    Rotation prob   : 0.5 (range: ±8.0 deg)
+    Scaling prob    : 0.5 (range: [0.95, 1.05])
+    Noise prob      : 0.5 (std: 2.0 mm)
+    Dropout prob    : 0.35 (rate: 0.15)
+──────────────────────────────────────────────────────────────────────
+
+======================================================================
+FOLD: test_user=user5, dev_users=['user1', 'user2', 'user3']
+======================================================================
+Fold seed: 544 (base 44 + user offset)
+
+============================================================
+SPLIT: test_user=user5, dev_users=['user1', 'user2', 'user3']
+============================================================
+Dev removed by filter   : {'missing_data': 1, 'low_confidence': 1, 'too_short': 3}
+Test removed by filter  : {'too_short': 2}
+Train segments (filtered): 1424
+Val segments (filtered)  : 271
+Test segments (filtered) : 592
+Label mapping (string -> ID):
+  np.str_('AUGUST') -> 0
+  np.str_('BIG') -> 1
+  np.str_('BIRD') -> 2
+  np.str_('BOAT') -> 3
+  np.str_('COME') -> 4
+  np.str_('DRIVER') -> 5
+  np.str_('FARMING') -> 6
+  np.str_('FEBRUARY') -> 7
+  np.str_('GO') -> 8
+  np.str_('GREETINGS') -> 9
+  np.str_('OUR') -> 10
+  np.str_('READ') -> 11
+  np.str_('SMALL') -> 12
+  np.str_('TIGER') -> 13
+  np.str_('TRAIN') -> 14
+  np.str_('UGLY') -> 15
+  np.str_('VAN') -> 16
+  np.str_('WHAT') -> 17
+  np.str_('WHICH') -> 18
+  np.str_('WRITE') -> 19
+  np.str_('background') -> 20
+
+Total classes: 21
+Background class ID: 20
+WER catalog sizes -> train: 171, val: 33, test: 72
+Train windows: 82815 | Val windows: 16037 | Test windows: 37406
+Train batches: 576 | Val batches: 4010 | Test batches: 9352
+Loss function: CrossEntropyLoss
+Model: thct_net | Trainable params: 1,185,727
+[thct_net] using normalization: palm_ref
+Stabilization: grad_clip=True (norm=1.0), scheduler=True, early_stopping_patience=15
+Model selection criterion: validation macro-F1
+  -> [thct_net] new best in memory (val_f1=0.9445, val_acc=0.9742)
+thct_net | Epoch 01 | Loss: 0.4315 | Train Acc: 0.9126 | Train F1: 0.9130 | Val Loss: 0.0953 | Val Acc: 0.9742 | Val F1: 0.9445
+  -> [thct_net] new best in memory (val_f1=0.9676, val_acc=0.9853)
+thct_net | Epoch 02 | Loss: 0.0204 | Train Acc: 0.9944 | Train F1: 0.9944 | Val Loss: 0.0709 | Val Acc: 0.9853 | Val F1: 0.9676
+thct_net | Epoch 03 | Loss: 0.0143 | Train Acc: 0.9959 | Train F1: 0.9959 | Val Loss: 0.0637 | Val Acc: 0.9863 | Val F1: 0.9657
+  -> [thct_net] new best in memory (val_f1=0.9698, val_acc=0.9875)
+thct_net | Epoch 04 | Loss: 0.0086 | Train Acc: 0.9976 | Train F1: 0.9976 | Val Loss: 0.0602 | Val Acc: 0.9875 | Val F1: 0.9698
+  -> [thct_net] new best in memory (val_f1=0.9755, val_acc=0.9916)
+thct_net | Epoch 05 | Loss: 0.0087 | Train Acc: 0.9975 | Train F1: 0.9975 | Val Loss: 0.0455 | Val Acc: 0.9916 | Val F1: 0.9755
+  -> [thct_net] new best in memory (val_f1=0.9794, val_acc=0.9923)
+thct_net | Epoch 06 | Loss: 0.0062 | Train Acc: 0.9982 | Train F1: 0.9982 | Val Loss: 0.0426 | Val Acc: 0.9923 | Val F1: 0.9794
+  -> [thct_net] new best in memory (val_f1=0.9822, val_acc=0.9926)
+thct_net | Epoch 07 | Loss: 0.0060 | Train Acc: 0.9983 | Train F1: 0.9984 | Val Loss: 0.0459 | Val Acc: 0.9926 | Val F1: 0.9822
+thct_net | Epoch 08 | Loss: 0.0058 | Train Acc: 0.9982 | Train F1: 0.9982 | Val Loss: 0.0476 | Val Acc: 0.9910 | Val F1: 0.9780
+thct_net | Epoch 09 | Loss: 0.0048 | Train Acc: 0.9986 | Train F1: 0.9986 | Val Loss: 0.0404 | Val Acc: 0.9921 | Val F1: 0.9807
+thct_net | Epoch 10 | Loss: 0.0045 | Train Acc: 0.9986 | Train F1: 0.9986 | Val Loss: 0.0541 | Val Acc: 0.9906 | Val F1: 0.9764
+
+thct_net per-epoch summary:
+      model normalization  epoch  train_loss  train_batch_acc  train_f1  val_loss   val_acc    val_f1
+0  thct_net      palm_ref      1    0.431454         0.912568  0.912997  0.095301  0.974247  0.944486
+1  thct_net      palm_ref      2    0.020370         0.994418  0.994412  0.070881  0.985284  0.967592
+2  thct_net      palm_ref      3    0.014341         0.995913  0.995870  0.063728  0.986282  0.965685
+3  thct_net      palm_ref      4    0.008585         0.997637  0.997602  0.060176  0.987529  0.969835
+4  thct_net      palm_ref      5    0.008700         0.997492  0.997494  0.045546  0.991582  0.975465
+5  thct_net      palm_ref      6    0.006237         0.998228  0.998224  0.042636  0.992268  0.979381
+6  thct_net      palm_ref      7    0.005987         0.998348  0.998353  0.045942  0.992580  0.982156
+7  thct_net      palm_ref      8    0.005841         0.998192  0.998195  0.047616  0.991021  0.977987
+8  thct_net      palm_ref      9    0.004775         0.998626  0.998619  0.040352  0.992081  0.980657
+9  thct_net      palm_ref     10    0.004547         0.998626  0.998631  0.054085  0.990647  0.976450
+[thct_net] best model restored from memory.
+
+========== TRAIN WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9995
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00      3996
+         BIG       1.00      1.00      1.00      3972
+        BIRD       1.00      1.00      1.00      4032
+        BOAT       1.00      1.00      1.00      3804
+        COME       1.00      1.00      1.00      3912
+      DRIVER       1.00      1.00      1.00      3912
+     FARMING       1.00      1.00      1.00      4008
+    FEBRUARY       1.00      1.00      1.00      4092
+          GO       1.00      1.00      1.00      3876
+   GREETINGS       1.00      1.00      1.00      3900
+         OUR       1.00      1.00      1.00      4296
+        READ       1.00      1.00      1.00      4032
+       SMALL       1.00      1.00      1.00      3660
+       TIGER       1.00      1.00      1.00      3924
+       TRAIN       1.00      1.00      1.00      4044
+        UGLY       1.00      1.00      1.00      3984
+         VAN       1.00      1.00      1.00      3984
+        WHAT       1.00      1.00      1.00      3900
+       WHICH       1.00      1.00      1.00      3924
+       WRITE       1.00      1.00      1.00      3900
+  background       1.00      1.00      1.00      3792
+
+    accuracy                           1.00     82944
+   macro avg       1.00      1.00      1.00     82944
+weighted avg       1.00      1.00      1.00     82944
+
+
+========== VAL WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9926
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00       489
+         BIG       0.89      1.00      0.94       210
+        BIRD       1.00      1.00      1.00       359
+        BOAT       1.00      1.00      1.00       257
+        COME       0.85      1.00      0.92       203
+      DRIVER       1.00      1.00      1.00       697
+     FARMING       1.00      0.99      1.00       351
+    FEBRUARY       0.95      1.00      0.98       489
+          GO       1.00      0.97      0.98        94
+   GREETINGS       1.00      1.00      1.00       309
+         OUR       1.00      0.90      0.95       197
+        READ       1.00      1.00      1.00       500
+       SMALL       0.91      1.00      0.95       248
+       TIGER       0.97      1.00      0.98       175
+       TRAIN       1.00      1.00      1.00       266
+        UGLY       1.00      0.90      0.95       262
+         VAN       1.00      1.00      1.00       190
+        WHAT       1.00      1.00      1.00        52
+       WHICH       1.00      0.96      0.98       331
+       WRITE       1.00      1.00      1.00       304
+  background       1.00      0.99      1.00     10054
+
+    accuracy                           0.99     16037
+   macro avg       0.98      0.99      0.98     16037
+weighted avg       0.99      0.99      0.99     16037
+
+Confusion matrix saved to: trained_models/plots/confusion_matrices/user5/val_confusion_normalized.png
+Misclassification matrix saved to: trained_models/plots/confusion_matrices/user5/val_confusion_misclassifications.png
+
+========== TEST WINDOW-LEVEL REPORT ==========
+Accuracy: 0.9846
+              precision    recall  f1-score   support
+
+      AUGUST       1.00      1.00      1.00      1049
+         BIG       1.00      1.00      1.00       314
+        BIRD       0.98      1.00      0.99       508
+        BOAT       0.95      1.00      0.98       463
+        COME       0.87      1.00      0.93       586
+      DRIVER       1.00      1.00      1.00      1150
+     FARMING       0.92      0.96      0.94       368
+    FEBRUARY       0.98      1.00      0.99       831
+          GO       0.97      0.54      0.70       349
+   GREETINGS       0.99      0.99      0.99       766
+         OUR       0.85      0.74      0.79       260
+        READ       1.00      0.97      0.99       818
+       SMALL       0.91      0.98      0.95       622
+       TIGER       0.99      1.00      1.00       463
+       TRAIN       0.99      0.98      0.98       756
+        UGLY       0.74      0.98      0.84       494
+         VAN       0.96      1.00      0.98       323
+        WHAT       0.85      1.00      0.92        66
+       WHICH       0.89      0.98      0.93       608
+       WRITE       1.00      1.00      1.00       964
+  background       1.00      0.99      0.99     25648
+
+    accuracy                           0.98     37406
+   macro avg       0.94      0.96      0.95     37406
+weighted avg       0.99      0.98      0.98     37406
+
+Confusion matrix saved to: trained_models/plots/confusion_matrices/user5/test_confusion_normalized.png
+Misclassification matrix saved to: trained_models/plots/confusion_matrices/user5/test_confusion_misclassifications.png
+
+========== WINDOW ACCURACY SUMMARY ==========
+split  frame_accuracy
+Train        0.999482
+  Val        0.992580
+ Test        0.984575
+
+========== TEST (USER5) WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : thct_net_batch
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 72
+Mean WER:   0.0498
+Median WER: 0.0000
+Std WER:    0.1176
+
+Showing 5 example sequence(s):
+  [1] user5 | P5_S10_R4
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(57, 129, np.str_('SMALL')), (207, 305, np.str_('FEBRUARY')), (364, 427, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 37, 'end_frame': 108}, {'label': 'FEBRUARY', 'start_frame': 186, 'end_frame': 288}, {'label': 'BOAT', 'start_frame': 353, 'end_frame': 409}]
+  [2] user5 | P5_S4_R8
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['BOAT', 'TRAIN', 'TIGER']
+    Prediction   : ['BOAT', 'TRAIN', 'TIGER']
+    WER          : 0.0000
+    Emit regions : [(33, 86, np.str_('BOAT')), (227, 324, np.str_('TRAIN')), (432, 550, np.str_('TIGER'))]
+    GT segments  : [{'label': 'BOAT', 'start_frame': 15, 'end_frame': 70}, {'label': 'TRAIN', 'start_frame': 216, 'end_frame': 300}, {'label': 'TIGER', 'start_frame': 410, 'end_frame': 508}]
+  [3] user5 | P5_S3_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['WRITE', 'FEBRUARY', 'UGLY', 'AUGUST']
+    Prediction   : ['WRITE', 'FEBRUARY', 'UGLY', 'AUGUST']
+    WER          : 0.0000
+    Emit regions : [(33, 135, np.str_('WRITE')), (203, 291, np.str_('FEBRUARY')), (385, 456, np.str_('UGLY')), (558, 650, np.str_('AUGUST'))]
+    GT segments  : [{'label': 'WRITE', 'start_frame': 12, 'end_frame': 113}, {'label': 'FEBRUARY', 'start_frame': 185, 'end_frame': 264}, {'label': 'UGLY', 'start_frame': 367, 'end_frame': 444}, {'label': 'AUGUST', 'start_frame': 540, 'end_frame': 638}]
+  [4] user5 | P5_S2_R6
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    Prediction   : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    WER          : 0.0000
+    Emit regions : [(35, 99, np.str_('FARMING')), (177, 232, np.str_('BIG')), (326, 389, np.str_('VAN')), (473, 544, np.str_('SMALL'))]
+    GT segments  : [{'label': 'FARMING', 'start_frame': 20, 'end_frame': 76}, {'label': 'BIG', 'start_frame': 165, 'end_frame': 223}, {'label': 'VAN', 'start_frame': 308, 'end_frame': 366}, {'label': 'SMALL', 'start_frame': 445, 'end_frame': 532}]
+  [5] user5 | P5_S2_R1
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    Prediction   : ['FARMING', 'BIG', 'VAN', 'SMALL']
+    WER          : 0.0000
+    Emit regions : [(33, 79, np.str_('FARMING')), (155, 199, np.str_('BIG')), (309, 365, np.str_('VAN')), (436, 484, np.str_('SMALL'))]
+    GT segments  : [{'label': 'FARMING', 'start_frame': 14, 'end_frame': 60}, {'label': 'BIG', 'start_frame': 144, 'end_frame': 192}, {'label': 'VAN', 'start_frame': 294, 'end_frame': 345}, {'label': 'SMALL', 'start_frame': 419, 'end_frame': 474}]
+[test_user5_20260707T035231Z] metadata -> trained_models/results/test_user5_20260707t035231z_metadata.parquet
+[test_user5_20260707T035231Z] arrays   -> trained_models/results/test_user5_20260707t035231z_arrays.npz
+  sequences : 72
+  npz keys  : 576
+
+========== DEV VAL WER SUMMARY ==========
+Normalization  : palm_ref
+Stream mode    : thct_net_batch
+Bag size       : 5  (167ms)
+Aggregation    : mean
+Conf threshold : 0.35
+Min sign frames: 15  (500ms)
+Total sequences evaluated: 33
+Mean WER:   0.0152
+Median WER: 0.0000
+Std WER:    0.0597
+
+Showing 5 example sequence(s):
+  [1] user1 | P1_S8_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['BIG', 'GREETINGS', 'WHICH', 'FARMING']
+    Prediction   : ['BIG', 'GREETINGS', 'WHICH', 'FARMING']
+    WER          : 0.0000
+    Emit regions : [(89, 153, np.str_('BIG')), (224, 288, np.str_('GREETINGS')), (312, 392, np.str_('WHICH')), (423, 532, np.str_('FARMING'))]
+    GT segments  : [{'label': 'BIG', 'start_frame': 58, 'end_frame': 127}, {'label': 'GREETINGS', 'start_frame': 204, 'end_frame': 270}, {'label': 'WHICH', 'start_frame': 291, 'end_frame': 376}, {'label': 'FARMING', 'start_frame': 408, 'end_frame': 511}]
+  [2] user1 | P1_S6_R3
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['WHICH', 'OUR', 'TRAIN']
+    Prediction   : ['WHICH', 'OUR', 'TRAIN']
+    WER          : 0.0000
+    Emit regions : [(72, 215, np.str_('WHICH')), (251, 351, np.str_('OUR')), (386, 486, np.str_('TRAIN'))]
+    GT segments  : [{'label': 'WHICH', 'start_frame': 58, 'end_frame': 198}, {'label': 'OUR', 'start_frame': 237, 'end_frame': 333}, {'label': 'TRAIN', 'start_frame': 373, 'end_frame': 463}]
+  [3] user1 | P1_S1_R8
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['GO', 'READ', 'OUR', 'COME']
+    Prediction   : ['GO', 'READ', 'OUR', 'COME']
+    WER          : 0.0000
+    Emit regions : [(67, 121, np.str_('GO')), (162, 240, np.str_('READ')), (293, 351, np.str_('OUR')), (414, 478, np.str_('COME'))]
+    GT segments  : [{'label': 'GO', 'start_frame': 47, 'end_frame': 101}, {'label': 'READ', 'start_frame': 154, 'end_frame': 232}, {'label': 'OUR', 'start_frame': 275, 'end_frame': 335}, {'label': 'COME', 'start_frame': 394, 'end_frame': 460}]
+  [4] user1 | P1_S10_R6
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 3
+    GT           : ['SMALL', 'FEBRUARY', 'BOAT']
+    Prediction   : ['SMALL', 'FEBRUARY', 'BOAT']
+    WER          : 0.0000
+    Emit regions : [(41, 121, np.str_('SMALL')), (176, 288, np.str_('FEBRUARY')), (330, 418, np.str_('BOAT'))]
+    GT segments  : [{'label': 'SMALL', 'start_frame': 17, 'end_frame': 98}, {'label': 'FEBRUARY', 'start_frame': 156, 'end_frame': 263}, {'label': 'BOAT', 'start_frame': 320, 'end_frame': 393}]
+  [5] user1 | P1_S5_R5
+    Frames       : 750 | Missing ratio: 0.000
+    Stream steps : 721 | Emitted: 4
+    GT           : ['BIRD', 'WHAT', 'DRIVER', 'GREETINGS']
+    Prediction   : ['BIRD', 'WHAT', 'DRIVER', 'GREETINGS']
+    WER          : 0.0000
+    Emit regions : [(50, 135, np.str_('BIRD')), (188, 228, np.str_('WHAT')), (302, 425, np.str_('DRIVER')), (506, 639, np.str_('GREETINGS'))]
+    GT segments  : [{'label': 'BIRD', 'start_frame': 30, 'end_frame': 114}, {'label': 'WHAT', 'start_frame': 170, 'end_frame': 207}, {'label': 'DRIVER', 'start_frame': 286, 'end_frame': 406}, {'label': 'GREETINGS', 'start_frame': 490, 'end_frame': 620}]
+[val_user5_20260707T035231Z] metadata -> trained_models/results/val_user5_20260707t035231z_metadata.parquet
+[val_user5_20260707T035231Z] arrays   -> trained_models/results/val_user5_20260707t035231z_arrays.npz
+  sequences : 33
+  npz keys  : 264
+
+============================================================
+STREAMING METRICS EVALUATION (from WER outputs) — Test (user5)
+============================================================
+Sequences: 72 | Classes: 21
+Running: corrected
+
+
+────────────────────────────────────────────────────────────
+CORRECTED METRICS (SHREC'21 protocol) — Test (user5)
+────────────────────────────────────────────────────────────
+============================================================
+GLOBAL RESULTS  (Corrected — SHREC'21 protocol)
+============================================================
+Class AUGUST:
+  Detection Rate : 1.0000  (12/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0000  (0 FP / 12 GT)
+  Avg Latency    : 21.50 frames
+  Avg Jaccard    : 0.7101
+Class BIG:
+  Detection Rate : 0.8667  (13/15)
+  Misclass Rate  : 0.0667  (1/15)
+  False Pos Rate : 0.0667  (1 FP / 15 GT)
+  Avg Latency    : 11.31 frames
+  Avg Jaccard    : 0.4677
+Class BIRD:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 20.85 frames
+  Avg Jaccard    : 0.5073
+Class BOAT:
+  Detection Rate : 1.0000  (14/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.0000  (0 FP / 14 GT)
+  Avg Latency    : 15.86 frames
+  Avg Jaccard    : 0.5843
+Class COME:
+  Detection Rate : 1.0000  (15/15)
+  Misclass Rate  : 0.0000  (0/15)
+  False Pos Rate : 0.0667  (1 FP / 15 GT)
+  Avg Latency    : 20.60 frames
+  Avg Jaccard    : 0.5060
+Class DRIVER:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 14.31 frames
+  Avg Jaccard    : 0.7593
+Class FARMING:
+  Detection Rate : 0.8667  (13/15)
+  Misclass Rate  : 0.0000  (0/15)
+  False Pos Rate : 0.1333  (2 FP / 15 GT)
+  Avg Latency    : 18.15 frames
+  Avg Jaccard    : 0.3409
+Class FEBRUARY:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0769  (1 FP / 13 GT)
+  Avg Latency    : 21.31 frames
+  Avg Jaccard    : 0.6059
+Class GO:
+  Detection Rate : 0.3077  (4/13)
+  Misclass Rate  : 0.4615  (6/13)
+  False Pos Rate : 0.1538  (2 FP / 13 GT)
+  Avg Latency    : 38.00 frames
+  Avg Jaccard    : 0.0873
+Class GREETINGS:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 15.92 frames
+  Avg Jaccard    : 0.6448
+Class OUR:
+  Detection Rate : 0.7857  (11/14)
+  Misclass Rate  : 0.2143  (3/14)
+  False Pos Rate : 0.0000  (0 FP / 14 GT)
+  Avg Latency    : 33.18 frames
+  Avg Jaccard    : 0.3392
+Class READ:
+  Detection Rate : 1.0000  (12/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0000  (0 FP / 12 GT)
+  Avg Latency    : 21.25 frames
+  Avg Jaccard    : 0.7378
+Class SMALL:
+  Detection Rate : 1.0000  (14/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.0714  (1 FP / 14 GT)
+  Avg Latency    : 22.79 frames
+  Avg Jaccard    : 0.5357
+Class TIGER:
+  Detection Rate : 1.0000  (12/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0000  (0 FP / 12 GT)
+  Avg Latency    : 20.50 frames
+  Avg Jaccard    : 0.4960
+Class TRAIN:
+  Detection Rate : 1.0000  (14/14)
+  Misclass Rate  : 0.0000  (0/14)
+  False Pos Rate : 0.0000  (0 FP / 14 GT)
+  Avg Latency    : 14.64 frames
+  Avg Jaccard    : 0.6647
+Class UGLY:
+  Detection Rate : 1.0000  (12/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0833  (1 FP / 12 GT)
+  Avg Latency    : 27.00 frames
+  Avg Jaccard    : 0.5236
+Class VAN:
+  Detection Rate : 1.0000  (12/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0000  (0 FP / 12 GT)
+  Avg Latency    : 16.83 frames
+  Avg Jaccard    : 0.5065
+Class WHAT:
+  Detection Rate : 0.7000  (7/10)
+  Misclass Rate  : 0.0000  (0/10)
+  False Pos Rate : 0.3000  (3 FP / 10 GT)
+  Avg Latency    : 14.43 frames
+  Avg Jaccard    : 0.2447
+Class WHICH:
+  Detection Rate : 1.0000  (13/13)
+  Misclass Rate  : 0.0000  (0/13)
+  False Pos Rate : 0.0000  (0 FP / 13 GT)
+  Avg Latency    : 21.54 frames
+  Avg Jaccard    : 0.5380
+Class WRITE:
+  Detection Rate : 1.0000  (12/12)
+  Misclass Rate  : 0.0000  (0/12)
+  False Pos Rate : 0.0000  (0 FP / 12 GT)
+  Avg Latency    : 17.08 frames
+  Avg Jaccard    : 0.6962
+
+--- Macro averages (across all classes) ---
+  Detection Rate : 0.9272
+  Misclass Rate  : 0.0383
+  False Pos Rate : 0.0460
+  Jaccard Index  : 0.5248
+============================================================
+Saved model checkpoint: trained_models/20260707T102513Z_thct_net_val-0.9926_f5c0620d.pt
+Training curve saved to: trained_models/plots/curves_test_user5_20260707T035231Z_loss.png
+Training curve saved to: trained_models/plots/curves_test_user5_20260707T035231Z_accuracy.png
+Training curve saved to: trained_models/plots/curves_test_user5_20260707T035231Z_f1.png
+
+======================================================================
+FINAL SUMMARY ACROSS ALL FOLDS
+======================================================================
+test_user           dev_users  best_val_acc  best_val_f1  test_mean_wer                                                      saved_path
+    user1 user2, user3, user5      0.994714     0.988287       0.184211 trained_models/20260707T052907Z_thct_net_val-0.9947_75f077d4.pt
+    user2 user1, user3, user5      0.994758     0.986493       0.046804 trained_models/20260707T070632Z_thct_net_val-0.9948_012926cd.pt
+    user3 user1, user2, user5      0.990924     0.978589       0.068182 trained_models/20260707T084650Z_thct_net_val-0.9909_24571ed0.pt
+    user5 user1, user2, user3      0.992580     0.982156       0.049769 trained_models/20260707T102513Z_thct_net_val-0.9926_f5c0620d.pt
+
+LOUO Mean Test WER: 0.0872 ± 0.0566
+LOUO Best Val Acc:  0.9932 ± 0.0016
+LOUO Best Val F1:   0.9839 ± 0.0038

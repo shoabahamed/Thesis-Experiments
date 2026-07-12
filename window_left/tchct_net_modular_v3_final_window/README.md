@@ -1,0 +1,1 @@
+changed window size to 20

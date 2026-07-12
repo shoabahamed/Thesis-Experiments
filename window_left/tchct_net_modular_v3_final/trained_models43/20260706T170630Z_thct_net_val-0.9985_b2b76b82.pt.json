@@ -1,0 +1,19 @@
+{
+  "model_name": "thct_net",
+  "saved_at_utc": "20260706T170630Z",
+  "uid": "b2b76b82",
+  "best_val_acc": 0.9984568853774458,
+  "normalization": "palm_ref",
+  "test_user": "user1",
+  "dev_users": [
+    "user2",
+    "user3",
+    "user5"
+  ],
+  "d_model": 128,
+  "num_heads": 4,
+  "num_transformer_layers": 4,
+  "base_ch": 64,
+  "test_mean_wer": 0.20942982456140347,
+  "best_val_f1": 0.9960049119880797
+}
